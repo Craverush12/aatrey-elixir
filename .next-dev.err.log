@@ -1,0 +1,1228 @@
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\Arjun\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\Arjun\Desktop\buranshelixir\buransh\package-lock.json
+
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/elixir" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <Head>
+          <__next_root_layout_boundary__>
+            <SegmentViewNode type="layout" pagePath="layout.tsx">
+              <SegmentTrieNode>
+              <link>
+              <script>
+              <script>
+              <script>
+              <RootLayout>
+                <html lang="en" className="cormorant_...">
+                  <body style={{...}}>
+                    <LenisProvider>
+                      <Nav>
+                      ...
+                        <BulkInquiry>
+                          <section id="bulk-order" style={{...}}>
+                            <div style={{display:"grid", ...}}>
+                              <div>
+                              <div>
+                                <form onSubmit={function} style={{display:"flex", ...}} noValidate={true}>
+                                  <input
+                                    name="website"
+                                    onChange={function onChange}
+                                    onBlur={function onChange}
+                                    ref={function ref}
+                                    type="text"
++                                   style={{display:"none"}}
+-                                   style={{display:"none",caret-color:"transparent"}}
+                                    tabIndex={-1}
+                                    aria-hidden="true"
+                                  >
+                                  <div>
+                                    <label>
+                                    <input
+                                      name="name"
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      ref={function ref}
+                                      type="text"
+                                      placeholder="Full name"
+                                      style={{
++                                       width: "100%"
+-                                       width: "100%"
++                                       background: "transparent"
++                                       border: "1px solid #D8C8A8"
++                                       color: "#18100A"
+-                                       color: "rgb(24, 16, 10)"
++                                       padding: "10px 12px"
++                                       fontFamily: "'EB Garamond', serif"
++                                       fontSize: "15px"
++                                       outline: "none"
++                                       transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       background-image: "initial"
+-                                       background-position-x: "initial"
+-                                       background-position-y: "initial"
+-                                       background-size: "initial"
+-                                       background-repeat: "initial"
+-                                       background-attachment: "initial"
+-                                       background-origin: "initial"
+-                                       background-clip: "initial"
+-                                       background-color: "transparent"
+-                                       border-top-width: "1px"
+-                                       border-right-width: "1px"
+-                                       border-bottom-width: "1px"
+-                                       border-left-width: "1px"
+-                                       border-top-style: "solid"
+-                                       border-right-style: "solid"
+-                                       border-bottom-style: "solid"
+-                                       border-left-style: "solid"
+-                                       border-top-color: "rgb(216, 200, 168)"
+-                                       border-right-color: "rgb(216, 200, 168)"
+-                                       border-bottom-color: "rgb(216, 200, 168)"
+-                                       border-left-color: "rgb(216, 200, 168)"
+-                                       border-image-source: "initial"
+-                                       border-image-slice: "initial"
+-                                       border-image-width: "initial"
+-                                       border-image-outset: "initial"
+-                                       border-image-repeat: "initial"
+-                                       padding-top: "10px"
+-                                       padding-right: "12px"
+-                                       padding-bottom: "10px"
+-                                       padding-left: "12px"
+-                                       font-family: "\"EB Garamond\", serif"
+-                                       font-size: "15px"
+-                                       outline-color: "initial"
+-                                       outline-style: "none"
+-                                       outline-width: "initial"
+-                                       transition-behavior: "normal"
+-                                       transition-duration: "400ms"
+-                                       transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       transition-delay: "0s"
+-                                       transition-property: "border-color"
+-                                       caret-color: "transparent"
+                                      }}
+                                      onFocus={function onFocus}
+                                    >
+                                  <div>
+                                    <label>
+                                    <input
+                                      name="organisation"
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      ref={function ref}
+                                      type="text"
+                                      placeholder="Company / hotel / event name"
+                                      style={{
++                                       width: "100%"
+-                                       width: "100%"
++                                       background: "transparent"
++                                       border: "1px solid #D8C8A8"
++                                       color: "#18100A"
+-                                       color: "rgb(24, 16, 10)"
++                                       padding: "10px 12px"
++                                       fontFamily: "'EB Garamond', serif"
++                                       fontSize: "15px"
++                                       outline: "none"
++                                       transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       background-image: "initial"
+-                                       background-position-x: "initial"
+-                                       background-position-y: "initial"
+-                                       background-size: "initial"
+-                                       background-repeat: "initial"
+-                                       background-attachment: "initial"
+-                                       background-origin: "initial"
+-                                       background-clip: "initial"
+-                                       background-color: "transparent"
+-                                       border-top-width: "1px"
+-                                       border-right-width: "1px"
+-                                       border-bottom-width: "1px"
+-                                       border-left-width: "1px"
+-                                       border-top-style: "solid"
+-                                       border-right-style: "solid"
+-                                       border-bottom-style: "solid"
+-                                       border-left-style: "solid"
+-                                       border-top-color: "rgb(216, 200, 168)"
+-                                       border-right-color: "rgb(216, 200, 168)"
+-                                       border-bottom-color: "rgb(216, 200, 168)"
+-                                       border-left-color: "rgb(216, 200, 168)"
+-                                       border-image-source: "initial"
+-                                       border-image-slice: "initial"
+-                                       border-image-width: "initial"
+-                                       border-image-outset: "initial"
+-                                       border-image-repeat: "initial"
+-                                       padding-top: "10px"
+-                                       padding-right: "12px"
+-                                       padding-bottom: "10px"
+-                                       padding-left: "12px"
+-                                       font-family: "\"EB Garamond\", serif"
+-                                       font-size: "15px"
+-                                       outline-color: "initial"
+-                                       outline-style: "none"
+-                                       outline-width: "initial"
+-                                       transition-behavior: "normal"
+-                                       transition-duration: "400ms"
+-                                       transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       transition-delay: "0s"
+-                                       transition-property: "border-color"
+-                                       caret-color: "transparent"
+                                      }}
+                                      onFocus={function onFocus}
+                                    >
+                                  <div>
+                                    <label>
+                                    <input
+                                      name="email"
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      ref={function ref}
+                                      type="email"
+                                      placeholder="work@company.com"
+                                      style={{
++                                       width: "100%"
+-                                       width: "100%"
++                                       background: "transparent"
++                                       border: "1px solid #D8C8A8"
++                                       color: "#18100A"
+-                                       color: "rgb(24, 16, 10)"
++                                       padding: "10px 12px"
++                                       fontFamily: "'EB Garamond', serif"
++                                       fontSize: "15px"
++                                       outline: "none"
++                                       transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       background-image: "initial"
+-                                       background-position-x: "initial"
+-                                       background-position-y: "initial"
+-                                       background-size: "initial"
+-                                       background-repeat: "initial"
+-                                       background-attachment: "initial"
+-                                       background-origin: "initial"
+-                                       background-clip: "initial"
+-                                       background-color: "transparent"
+-                                       border-top-width: "1px"
+-                                       border-right-width: "1px"
+-                                       border-bottom-width: "1px"
+-                                       border-left-width: "1px"
+-                                       border-top-style: "solid"
+-                                       border-right-style: "solid"
+-                                       border-bottom-style: "solid"
+-                                       border-left-style: "solid"
+-                                       border-top-color: "rgb(216, 200, 168)"
+-                                       border-right-color: "rgb(216, 200, 168)"
+-                                       border-bottom-color: "rgb(216, 200, 168)"
+-                                       border-left-color: "rgb(216, 200, 168)"
+-                                       border-image-source: "initial"
+-                                       border-image-slice: "initial"
+-                                       border-image-width: "initial"
+-                                       border-image-outset: "initial"
+-                                       border-image-repeat: "initial"
+-                                       padding-top: "10px"
+-                                       padding-right: "12px"
+-                                       padding-bottom: "10px"
+-                                       padding-left: "12px"
+-                                       font-family: "\"EB Garamond\", serif"
+-                                       font-size: "15px"
+-                                       outline-color: "initial"
+-                                       outline-style: "none"
+-                                       outline-width: "initial"
+-                                       transition-behavior: "normal"
+-                                       transition-duration: "400ms"
+-                                       transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       transition-delay: "0s"
+-                                       transition-property: "border-color"
+-                                       caret-color: "transparent"
+                                      }}
+                                      onFocus={function onFocus}
+                                    >
+                                  <div>
+                                    <label>
+                                    <input
+                                      name="phone"
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      ref={function ref}
+                                      type="tel"
+                                      placeholder="+91 XXXXX XXXXX"
+                                      style={{
++                                       width: "100%"
+-                                       width: "100%"
++                                       background: "transparent"
++                                       border: "1px solid #D8C8A8"
++                                       color: "#18100A"
+-                                       color: "rgb(24, 16, 10)"
++                                       padding: "10px 12px"
++                                       fontFamily: "'EB Garamond', serif"
++                                       fontSize: "15px"
++                                       outline: "none"
++                                       transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       background-image: "initial"
+-                                       background-position-x: "initial"
+-                                       background-position-y: "initial"
+-                                       background-size: "initial"
+-                                       background-repeat: "initial"
+-                                       background-attachment: "initial"
+-                                       background-origin: "initial"
+-                                       background-clip: "initial"
+-                                       background-color: "transparent"
+-                                       border-top-width: "1px"
+-                                       border-right-width: "1px"
+-                                       border-bottom-width: "1px"
+-                                       border-left-width: "1px"
+-                                       border-top-style: "solid"
+-                                       border-right-style: "solid"
+-                                       border-bottom-style: "solid"
+-                                       border-left-style: "solid"
+-                                       border-top-color: "rgb(216, 200, 168)"
+-                                       border-right-color: "rgb(216, 200, 168)"
+-                                       border-bottom-color: "rgb(216, 200, 168)"
+-                                       border-left-color: "rgb(216, 200, 168)"
+-                                       border-image-source: "initial"
+-                                       border-image-slice: "initial"
+-                                       border-image-width: "initial"
+-                                       border-image-outset: "initial"
+-                                       border-image-repeat: "initial"
+-                                       padding-top: "10px"
+-                                       padding-right: "12px"
+-                                       padding-bottom: "10px"
+-                                       padding-left: "12px"
+-                                       font-family: "\"EB Garamond\", serif"
+-                                       font-size: "15px"
+-                                       outline-color: "initial"
+-                                       outline-style: "none"
+-                                       outline-width: "initial"
+-                                       transition-behavior: "normal"
+-                                       transition-duration: "400ms"
+-                                       transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       transition-delay: "0s"
+-                                       transition-property: "border-color"
+-                                       caret-color: "transparent"
+                                      }}
+                                      onFocus={function onFocus}
+                                    >
+                                  <div>
+                                  <style>
+                                  <div className="bulk-two-col" style={{display:"grid", ...}}>
+                                    <div>
+                                      <label>
+                                      <input
+                                        name="quantity"
+                                        onChange={function onChange}
+                                        onBlur={function onBlur}
+                                        ref={function ref}
+                                        type="text"
+                                        placeholder="e.g. 50 bottles"
+                                        style={{
++                                         width: "100%"
+-                                         width: "100%"
++                                         background: "transparent"
++                                         border: "1px solid #D8C8A8"
++                                         color: "#18100A"
+-                                         color: "rgb(24, 16, 10)"
++                                         padding: "10px 12px"
++                                         fontFamily: "'EB Garamond', serif"
++                                         fontSize: "15px"
++                                         outline: "none"
++                                         transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                         background-image: "initial"
+-                                         background-position-x: "initial"
+-                                         background-position-y: "initial"
+-                                         background-size: "initial"
+-                                         background-repeat: "initial"
+-                                         background-attachment: "initial"
+-                                         background-origin: "initial"
+-                                         background-clip: "initial"
+-                                         background-color: "transparent"
+-                                         border-top-width: "1px"
+-                                         border-right-width: "1px"
+-                                         border-bottom-width: "1px"
+-                                         border-left-width: "1px"
+-                                         border-top-style: "solid"
+-                                         border-right-style: "solid"
+-                                         border-bottom-style: "solid"
+-                                         border-left-style: "solid"
+-                                         border-top-color: "rgb(216, 200, 168)"
+-                                         border-right-color: "rgb(216, 200, 168)"
+-                                         border-bottom-color: "rgb(216, 200, 168)"
+-                                         border-left-color: "rgb(216, 200, 168)"
+-                                         border-image-source: "initial"
+-                                         border-image-slice: "initial"
+-                                         border-image-width: "initial"
+-                                         border-image-outset: "initial"
+-                                         border-image-repeat: "initial"
+-                                         padding-top: "10px"
+-                                         padding-right: "12px"
+-                                         padding-bottom: "10px"
+-                                         padding-left: "12px"
+-                                         font-family: "\"EB Garamond\", serif"
+-                                         font-size: "15px"
+-                                         outline-color: "initial"
+-                                         outline-style: "none"
+-                                         outline-width: "initial"
+-                                         transition-behavior: "normal"
+-                                         transition-duration: "400ms"
+-                                         transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                         transition-delay: "0s"
+-                                         transition-property: "border-color"
+-                                         caret-color: "transparent"
+                                        }}
+                                        onFocus={function onFocus}
+                                      >
+                                    <div>
+                                      <label>
+                                      <input
+                                        name="timeline"
+                                        onChange={function onChange}
+                                        onBlur={function onBlur}
+                                        ref={function ref}
+                                        type="text"
+                                        placeholder="e.g. Within 2 weeks"
+                                        style={{
++                                         width: "100%"
+-                                         width: "100%"
++                                         background: "transparent"
++                                         border: "1px solid #D8C8A8"
++                                         color: "#18100A"
+-                                         color: "rgb(24, 16, 10)"
++                                         padding: "10px 12px"
++                                         fontFamily: "'EB Garamond', serif"
++                                         fontSize: "15px"
++                                         outline: "none"
++                                         transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                         background-image: "initial"
+-                                         background-position-x: "initial"
+-                                         background-position-y: "initial"
+-                                         background-size: "initial"
+-                                         background-repeat: "initial"
+-                                         background-attachment: "initial"
+-                                         background-origin: "initial"
+-                                         background-clip: "initial"
+-                                         background-color: "transparent"
+-                                         border-top-width: "1px"
+-                                         border-right-width: "1px"
+-                                         border-bottom-width: "1px"
+-                                         border-left-width: "1px"
+-                                         border-top-style: "solid"
+-                                         border-right-style: "solid"
+-                                         border-bottom-style: "solid"
+-                                         border-left-style: "solid"
+-                                         border-top-color: "rgb(216, 200, 168)"
+-                                         border-right-color: "rgb(216, 200, 168)"
+-                                         border-bottom-color: "rgb(216, 200, 168)"
+-                                         border-left-color: "rgb(216, 200, 168)"
+-                                         border-image-source: "initial"
+-                                         border-image-slice: "initial"
+-                                         border-image-width: "initial"
+-                                         border-image-outset: "initial"
+-                                         border-image-repeat: "initial"
+-                                         padding-top: "10px"
+-                                         padding-right: "12px"
+-                                         padding-bottom: "10px"
+-                                         padding-left: "12px"
+-                                         font-family: "\"EB Garamond\", serif"
+-                                         font-size: "15px"
+-                                         outline-color: "initial"
+-                                         outline-style: "none"
+-                                         outline-width: "initial"
+-                                         transition-behavior: "normal"
+-                                         transition-duration: "400ms"
+-                                         transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                         transition-delay: "0s"
+-                                         transition-property: "border-color"
+-                                         caret-color: "transparent"
+                                        }}
+                                        onFocus={function onFocus}
+                                      >
+                                  <div>
+                                    <label>
+                                    <textarea
+                                      name="message"
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      ref={function ref}
+                                      placeholder="Additional details, customisation requirements, delivery location…"
+                                      rows={3}
+                                      style={{
++                                       width: "100%"
+-                                       width: "100%"
++                                       background: "transparent"
++                                       border: "1px solid #D8C8A8"
++                                       color: "#18100A"
+-                                       color: "rgb(24, 16, 10)"
++                                       padding: "10px 12px"
++                                       fontFamily: "'EB Garamond', serif"
++                                       fontSize: "15px"
++                                       outline: "none"
++                                       transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
++                                       resize: "vertical"
+-                                       resize: "vertical"
+-                                       background-image: "initial"
+-                                       background-position-x: "initial"
+-                                       background-position-y: "initial"
+-                                       background-size: "initial"
+-                                       background-repeat: "initial"
+-                                       background-attachment: "initial"
+-                                       background-origin: "initial"
+-                                       background-clip: "initial"
+-                                       background-color: "transparent"
+-                                       border-top-width: "1px"
+-                                       border-right-width: "1px"
+-                                       border-bottom-width: "1px"
+-                                       border-left-width: "1px"
+-                                       border-top-style: "solid"
+-                                       border-right-style: "solid"
+-                                       border-bottom-style: "solid"
+-                                       border-left-style: "solid"
+-                                       border-top-color: "rgb(216, 200, 168)"
+-                                       border-right-color: "rgb(216, 200, 168)"
+-                                       border-bottom-color: "rgb(216, 200, 168)"
+-                                       border-left-color: "rgb(216, 200, 168)"
+-                                       border-image-source: "initial"
+-                                       border-image-slice: "initial"
+-                                       border-image-width: "initial"
+-                                       border-image-outset: "initial"
+-                                       border-image-repeat: "initial"
+-                                       padding-top: "10px"
+-                                       padding-right: "12px"
+-                                       padding-bottom: "10px"
+-                                       padding-left: "12px"
+-                                       font-family: "\"EB Garamond\", serif"
+-                                       font-size: "15px"
+-                                       outline-color: "initial"
+-                                       outline-style: "none"
+-                                       outline-width: "initial"
+-                                       transition-behavior: "normal"
+-                                       transition-duration: "400ms"
+-                                       transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                       transition-delay: "0s"
+-                                       transition-property: "border-color"
+-                                       caret-color: "transparent"
+                                      }}
+                                      onFocus={function onFocus}
+                                    >
+                                  ...
+                      <Footer>
+                        <footer style={{...}}>
+                          <GrainOverlay>
+                          <style>
+                          <div style={{position:"...", ...}}>
+                            <div className="footer-grid" style={{display:"grid", ...}}>
+                              <div>
+                              <div>
+                              <div>
+                                <p>
+                                <form onSubmit={function handleSubmit} style={{display:"flex", ...}}>
+                                  <input
+                                    type="text"
+                                    placeholder="Name"
+                                    required={true}
+                                    value=""
+                                    onChange={function onChange}
+                                    style={{
++                                     background: "transparent"
++                                     border: "none"
++                                     borderBottom: "1px solid #7A4E1E50"
++                                     color: "#F5EDD8CC"
+-                                     color: "rgba(245, 237, 216, 0.8)"
++                                     padding: "8px 0"
++                                     fontFamily: "'EB Garamond', serif"
++                                     fontSize: "14px"
++                                     width: "100%"
+-                                     width: "100%"
++                                     outline: "none"
++                                     transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                     background-image: "initial"
+-                                     background-position-x: "initial"
+-                                     background-position-y: "initial"
+-                                     background-size: "initial"
+-                                     background-repeat: "initial"
+-                                     background-attachment: "initial"
+-                                     background-origin: "initial"
+-                                     background-clip: "initial"
+-                                     background-color: "transparent"
+-                                     border-top-width: "medium"
+-                                     border-right-width: "medium"
+-                                     border-left-width: "medium"
+-                                     border-top-style: "none"
+-                                     border-right-style: "none"
+-                                     border-left-style: "none"
+-                                     border-top-color: "currentcolor"
+-                                     border-right-color: "currentcolor"
+-                                     border-left-color: "currentcolor"
+-                                     border-image-source: "initial"
+-                                     border-image-slice: "initial"
+-                                     border-image-width: "initial"
+-                                     border-image-outset: "initial"
+-                                     border-image-repeat: "initial"
+-                                     border-bottom-width: "1px"
+-                                     border-bottom-style: "solid"
+-                                     border-bottom-color: "rgba(122, 78, 30, 0.314)"
+-                                     padding-top: "8px"
+-                                     padding-right: "0px"
+-                                     padding-bottom: "8px"
+-                                     padding-left: "0px"
+-                                     font-family: "\"EB Garamond\", serif"
+-                                     font-size: "14px"
+-                                     outline-color: "initial"
+-                                     outline-style: "none"
+-                                     outline-width: "initial"
+-                                     transition-behavior: "normal"
+-                                     transition-duration: "400ms"
+-                                     transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                     transition-delay: "0s"
+-                                     transition-property: "border-color"
+-                                     caret-color: "transparent"
+                                    }}
+                                    onFocus={function onFocus}
+                                    onBlur={function onBlur}
+                                  >
+                                  <input
+                                    type="email"
+                                    placeholder="Email"
+                                    required={true}
+                                    value=""
+                                    onChange={function onChange}
+                                    style={{
++                                     background: "transparent"
++                                     border: "none"
++                                     borderBottom: "1px solid #7A4E1E50"
++                                     color: "#F5EDD8CC"
+-                                     color: "rgba(245, 237, 216, 0.8)"
++                                     padding: "8px 0"
++                                     fontFamily: "'EB Garamond', serif"
++                                     fontSize: "14px"
++                                     width: "100%"
+-                                     width: "100%"
++                                     outline: "none"
++                                     transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                     background-image: "initial"
+-                                     background-position-x: "initial"
+-                                     background-position-y: "initial"
+-                                     background-size: "initial"
+-                                     background-repeat: "initial"
+-                                     background-attachment: "initial"
+-                                     background-origin: "initial"
+-                                     background-clip: "initial"
+-                                     background-color: "transparent"
+-                                     border-top-width: "medium"
+-                                     border-right-width: "medium"
+-                                     border-left-width: "medium"
+-                                     border-top-style: "none"
+-                                     border-right-style: "none"
+-                                     border-left-style: "none"
+-                                     border-top-color: "currentcolor"
+-                                     border-right-color: "currentcolor"
+-                                     border-left-color: "currentcolor"
+-                                     border-image-source: "initial"
+-                                     border-image-slice: "initial"
+-                                     border-image-width: "initial"
+-                                     border-image-outset: "initial"
+-                                     border-image-repeat: "initial"
+-                                     border-bottom-width: "1px"
+-                                     border-bottom-style: "solid"
+-                                     border-bottom-color: "rgba(122, 78, 30, 0.314)"
+-                                     padding-top: "8px"
+-                                     padding-right: "0px"
+-                                     padding-bottom: "8px"
+-                                     padding-left: "0px"
+-                                     font-family: "\"EB Garamond\", serif"
+-                                     font-size: "14px"
+-                                     outline-color: "initial"
+-                                     outline-style: "none"
+-                                     outline-width: "initial"
+-                                     transition-behavior: "normal"
+-                                     transition-duration: "400ms"
+-                                     transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                     transition-delay: "0s"
+-                                     transition-property: "border-color"
+-                                     caret-color: "transparent"
+                                    }}
+                                    onFocus={function onFocus}
+                                    onBlur={function onBlur}
+                                  >
+                                  ...
+                            ...
+          ...
+ 
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/elixir" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="elixir/pag...">
+          <SegmentTrieNode>
+          <ElixirPage>
+            <ElixirHero>
+            <WhatItIs>
+            <BetterThan>
+            <Occasions>
+            <RecipeCards>
+            <Customisation>
+            <section>
+            <OrderSection>
+              <Suspense fallback={<div>}>
+                <OrderFormInner>
+                  <section id="order" style={{...}}>
+                    <style>
+                    <p>
+                    <h2>
+                    <div className="order-main..." style={{display:"grid", ...}}>
+                      <OrderSummary>
+                      <form onSubmit={function} style={{display:"flex", ...}} noValidate={true}>
+                        <Field label="Full Name *" error={undefined}>
+                          <div>
+                            <label>
+                            <input
+                              name="name"
+                              onChange={function onChange}
+                              onBlur={function onBlur}
+                              ref={function ref}
+                              type="text"
+                              placeholder="Your full name"
+                              style={{
++                               width: "100%"
+-                               width: "100%"
++                               background: "#F5EDD8"
++                               border: "1px solid #D8C8A8"
++                               borderBottom: "1px solid #C0A880"
++                               color: "#18100A"
+-                               color: "rgb(24, 16, 10)"
++                               padding: "10px 12px"
++                               fontFamily: "'EB Garamond', serif"
++                               fontSize: "15px"
++                               outline: "none"
++                               transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                               background-image: "initial"
+-                               background-position-x: "initial"
+-                               background-position-y: "initial"
+-                               background-size: "initial"
+-                               background-repeat: "initial"
+-                               background-attachment: "initial"
+-                               background-origin: "initial"
+-                               background-clip: "initial"
+-                               background-color: "rgb(245, 237, 216)"
+-                               border-top-width: "1px"
+-                               border-right-width: "1px"
+-                               border-left-width: "1px"
+-                               border-top-style: "solid"
+-                               border-right-style: "solid"
+-                               border-left-style: "solid"
+-                               border-top-color: "rgb(216, 200, 168)"
+-                               border-right-color: "rgb(216, 200, 168)"
+-                               border-left-color: "rgb(216, 200, 168)"
+-                               border-image-source: "initial"
+-                               border-image-slice: "initial"
+-                               border-image-width: "initial"
+-                               border-image-outset: "initial"
+-                               border-image-repeat: "initial"
+-                               border-bottom-width: "1px"
+-                               border-bottom-style: "solid"
+-                               border-bottom-color: "rgb(192, 168, 128)"
+-                               padding-top: "10px"
+-                               padding-right: "12px"
+-                               padding-bottom: "10px"
+-                               padding-left: "12px"
+-                               font-family: "\"EB Garamond\", serif"
+-                               font-size: "15px"
+-                               outline-color: "initial"
+-                               outline-style: "none"
+-                               outline-width: "initial"
+-                               transition-behavior: "normal"
+-                               transition-duration: "400ms"
+-                               transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                               transition-delay: "0s"
+-                               transition-property: "border-color"
+                              }}
+                              onFocus={function onFocus}
+                            >
+                        <div className="order-two-col" style={{display:"grid", ...}}>
+                          <Field label="Phone *" error={undefined}>
+                            <div>
+                              <label>
+                              <input
+                                name="phone"
+                                onChange={function onChange}
+                                onBlur={function onBlur}
+                                ref={function ref}
+                                type="tel"
+                                placeholder="+91 XXXXX XXXXX"
+                                style={{
++                                 width: "100%"
+-                                 width: "100%"
++                                 background: "#F5EDD8"
++                                 border: "1px solid #D8C8A8"
++                                 borderBottom: "1px solid #C0A880"
++                                 color: "#18100A"
+-                                 color: "rgb(24, 16, 10)"
++                                 padding: "10px 12px"
++                                 fontFamily: "'EB Garamond', serif"
++                                 fontSize: "15px"
++                                 outline: "none"
++                                 transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 background-image: "initial"
+-                                 background-position-x: "initial"
+-                                 background-position-y: "initial"
+-                                 background-size: "initial"
+-                                 background-repeat: "initial"
+-                                 background-attachment: "initial"
+-                                 background-origin: "initial"
+-                                 background-clip: "initial"
+-                                 background-color: "rgb(245, 237, 216)"
+-                                 border-top-width: "1px"
+-                                 border-right-width: "1px"
+-                                 border-left-width: "1px"
+-                                 border-top-style: "solid"
+-                                 border-right-style: "solid"
+-                                 border-left-style: "solid"
+-                                 border-top-color: "rgb(216, 200, 168)"
+-                                 border-right-color: "rgb(216, 200, 168)"
+-                                 border-left-color: "rgb(216, 200, 168)"
+-                                 border-image-source: "initial"
+-                                 border-image-slice: "initial"
+-                                 border-image-width: "initial"
+-                                 border-image-outset: "initial"
+-                                 border-image-repeat: "initial"
+-                                 border-bottom-width: "1px"
+-                                 border-bottom-style: "solid"
+-                                 border-bottom-color: "rgb(192, 168, 128)"
+-                                 padding-top: "10px"
+-                                 padding-right: "12px"
+-                                 padding-bottom: "10px"
+-                                 padding-left: "12px"
+-                                 font-family: "\"EB Garamond\", serif"
+-                                 font-size: "15px"
+-                                 outline-color: "initial"
+-                                 outline-style: "none"
+-                                 outline-width: "initial"
+-                                 transition-behavior: "normal"
+-                                 transition-duration: "400ms"
+-                                 transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 transition-delay: "0s"
+-                                 transition-property: "border-color"
+                                }}
+                                onFocus={function onFocus}
+                              >
+                          <Field label="Email *" error={undefined}>
+                            <div>
+                              <label>
+                              <input
+                                name="email"
+                                onChange={function onChange}
+                                onBlur={function onBlur}
+                                ref={function ref}
+                                type="email"
+                                placeholder="your@email.com"
+                                style={{
++                                 width: "100%"
+-                                 width: "100%"
++                                 background: "#F5EDD8"
++                                 border: "1px solid #D8C8A8"
++                                 borderBottom: "1px solid #C0A880"
++                                 color: "#18100A"
+-                                 color: "rgb(24, 16, 10)"
++                                 padding: "10px 12px"
++                                 fontFamily: "'EB Garamond', serif"
++                                 fontSize: "15px"
++                                 outline: "none"
++                                 transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 background-image: "initial"
+-                                 background-position-x: "initial"
+-                                 background-position-y: "initial"
+-                                 background-size: "initial"
+-                                 background-repeat: "initial"
+-                                 background-attachment: "initial"
+-                                 background-origin: "initial"
+-                                 background-clip: "initial"
+-                                 background-color: "rgb(245, 237, 216)"
+-                                 border-top-width: "1px"
+-                                 border-right-width: "1px"
+-                                 border-left-width: "1px"
+-                                 border-top-style: "solid"
+-                                 border-right-style: "solid"
+-                                 border-left-style: "solid"
+-                                 border-top-color: "rgb(216, 200, 168)"
+-                                 border-right-color: "rgb(216, 200, 168)"
+-                                 border-left-color: "rgb(216, 200, 168)"
+-                                 border-image-source: "initial"
+-                                 border-image-slice: "initial"
+-                                 border-image-width: "initial"
+-                                 border-image-outset: "initial"
+-                                 border-image-repeat: "initial"
+-                                 border-bottom-width: "1px"
+-                                 border-bottom-style: "solid"
+-                                 border-bottom-color: "rgb(192, 168, 128)"
+-                                 padding-top: "10px"
+-                                 padding-right: "12px"
+-                                 padding-bottom: "10px"
+-                                 padding-left: "12px"
+-                                 font-family: "\"EB Garamond\", serif"
+-                                 font-size: "15px"
+-                                 outline-color: "initial"
+-                                 outline-style: "none"
+-                                 outline-width: "initial"
+-                                 transition-behavior: "normal"
+-                                 transition-duration: "400ms"
+-                                 transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 transition-delay: "0s"
+-                                 transition-property: "border-color"
+                                }}
+                                onFocus={function onFocus}
+                              >
+                        <Field label="Delivery A..." error={undefined}>
+                          <div>
+                            <label>
+                            <textarea
+                              name="address"
+                              onChange={function onChange}
+                              onBlur={function onBlur}
+                              ref={function ref}
+                              placeholder="Full delivery address"
+                              rows={3}
+                              style={{
++                               width: "100%"
+-                               width: "100%"
++                               background: "#F5EDD8"
++                               border: "1px solid #D8C8A8"
++                               borderBottom: "1px solid #C0A880"
++                               color: "#18100A"
+-                               color: "rgb(24, 16, 10)"
++                               padding: "10px 12px"
++                               fontFamily: "'EB Garamond', serif"
++                               fontSize: "15px"
++                               outline: "none"
++                               transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
++                               resize: "vertical"
+-                               resize: "vertical"
+-                               background-image: "initial"
+-                               background-position-x: "initial"
+-                               background-position-y: "initial"
+-                               background-size: "initial"
+-                               background-repeat: "initial"
+-                               background-attachment: "initial"
+-                               background-origin: "initial"
+-                               background-clip: "initial"
+-                               background-color: "rgb(245, 237, 216)"
+-                               border-top-width: "1px"
+-                               border-right-width: "1px"
+-                               border-left-width: "1px"
+-                               border-top-style: "solid"
+-                               border-right-style: "solid"
+-                               border-left-style: "solid"
+-                               border-top-color: "rgb(216, 200, 168)"
+-                               border-right-color: "rgb(216, 200, 168)"
+-                               border-left-color: "rgb(216, 200, 168)"
+-                               border-image-source: "initial"
+-                               border-image-slice: "initial"
+-                               border-image-width: "initial"
+-                               border-image-outset: "initial"
+-                               border-image-repeat: "initial"
+-                               border-bottom-width: "1px"
+-                               border-bottom-style: "solid"
+-                               border-bottom-color: "rgb(192, 168, 128)"
+-                               padding-top: "10px"
+-                               padding-right: "12px"
+-                               padding-bottom: "10px"
+-                               padding-left: "12px"
+-                               font-family: "\"EB Garamond\", serif"
+-                               font-size: "15px"
+-                               outline-color: "initial"
+-                               outline-style: "none"
+-                               outline-width: "initial"
+-                               transition-behavior: "normal"
+-                               transition-duration: "400ms"
+-                               transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                               transition-delay: "0s"
+-                               transition-property: "border-color"
+                              }}
+                              onFocus={function onFocus}
+                            >
+                        <Field label="Pincode *" error={undefined}>
+                          <div>
+                            <label>
+                            <input
+                              name="pincode"
+                              onChange={function onChange}
+                              onBlur={function onBlur}
+                              ref={function ref}
+                              type="text"
+                              placeholder="6-digit pincode"
+                              maxLength={6}
+                              style={{
++                               width: "100%"
+-                               width: "100%"
++                               background: "#F5EDD8"
++                               border: "1px solid #D8C8A8"
++                               borderBottom: "1px solid #C0A880"
++                               color: "#18100A"
+-                               color: "rgb(24, 16, 10)"
++                               padding: "10px 12px"
++                               fontFamily: "'EB Garamond', serif"
++                               fontSize: "15px"
++                               outline: "none"
++                               transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
++                               maxWidth: "160px"
+-                               background-image: "initial"
+-                               background-position-x: "initial"
+-                               background-position-y: "initial"
+-                               background-size: "initial"
+-                               background-repeat: "initial"
+-                               background-attachment: "initial"
+-                               background-origin: "initial"
+-                               background-clip: "initial"
+-                               background-color: "rgb(245, 237, 216)"
+-                               border-top-width: "1px"
+-                               border-right-width: "1px"
+-                               border-left-width: "1px"
+-                               border-top-style: "solid"
+-                               border-right-style: "solid"
+-                               border-left-style: "solid"
+-                               border-top-color: "rgb(216, 200, 168)"
+-                               border-right-color: "rgb(216, 200, 168)"
+-                               border-left-color: "rgb(216, 200, 168)"
+-                               border-image-source: "initial"
+-                               border-image-slice: "initial"
+-                               border-image-width: "initial"
+-                               border-image-outset: "initial"
+-                               border-image-repeat: "initial"
+-                               border-bottom-width: "1px"
+-                               border-bottom-style: "solid"
+-                               border-bottom-color: "rgb(192, 168, 128)"
+-                               padding-top: "10px"
+-                               padding-right: "12px"
+-                               padding-bottom: "10px"
+-                               padding-left: "12px"
+-                               font-family: "\"EB Garamond\", serif"
+-                               font-size: "15px"
+-                               outline-color: "initial"
+-                               outline-style: "none"
+-                               outline-width: "initial"
+-                               transition-behavior: "normal"
+-                               transition-duration: "400ms"
+-                               transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                               transition-delay: "0s"
+-                               transition-property: "border-color"
+-                               max-width: "160px"
+                              }}
+                              onFocus={function onFocus}
+                            >
+                        <div className="order-thre..." style={{display:"grid", ...}}>
+                          <Field label="Quantity *" error={undefined}>
+                            <div>
+                              <label>
+                              <input
+                                name="quantity"
+                                onChange={function onChange}
+                                onBlur={function onBlur}
+                                ref={function ref}
+                                type="number"
+                                min={1}
+                                max={24}
+                                style={{
++                                 width: "100%"
+-                                 width: "100%"
++                                 background: "#F5EDD8"
++                                 border: "1px solid #D8C8A8"
++                                 borderBottom: "1px solid #C0A880"
++                                 color: "#18100A"
+-                                 color: "rgb(24, 16, 10)"
++                                 padding: "10px 12px"
++                                 fontFamily: "'EB Garamond', serif"
++                                 fontSize: "15px"
++                                 outline: "none"
++                                 transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 background-image: "initial"
+-                                 background-position-x: "initial"
+-                                 background-position-y: "initial"
+-                                 background-size: "initial"
+-                                 background-repeat: "initial"
+-                                 background-attachment: "initial"
+-                                 background-origin: "initial"
+-                                 background-clip: "initial"
+-                                 background-color: "rgb(245, 237, 216)"
+-                                 border-top-width: "1px"
+-                                 border-right-width: "1px"
+-                                 border-left-width: "1px"
+-                                 border-top-style: "solid"
+-                                 border-right-style: "solid"
+-                                 border-left-style: "solid"
+-                                 border-top-color: "rgb(216, 200, 168)"
+-                                 border-right-color: "rgb(216, 200, 168)"
+-                                 border-left-color: "rgb(216, 200, 168)"
+-                                 border-image-source: "initial"
+-                                 border-image-slice: "initial"
+-                                 border-image-width: "initial"
+-                                 border-image-outset: "initial"
+-                                 border-image-repeat: "initial"
+-                                 border-bottom-width: "1px"
+-                                 border-bottom-style: "solid"
+-                                 border-bottom-color: "rgb(192, 168, 128)"
+-                                 padding-top: "10px"
+-                                 padding-right: "12px"
+-                                 padding-bottom: "10px"
+-                                 padding-left: "12px"
+-                                 font-family: "\"EB Garamond\", serif"
+-                                 font-size: "15px"
+-                                 outline-color: "initial"
+-                                 outline-style: "none"
+-                                 outline-width: "initial"
+-                                 transition-behavior: "normal"
+-                                 transition-duration: "400ms"
+-                                 transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                                 transition-delay: "0s"
+-                                 transition-property: "border-color"
+                                }}
+                                onFocus={function onFocus}
+                              >
+                          ...
+                        <Field label="Gift Messa..." error={undefined}>
+                          <div>
+                            <label>
+                            <textarea
+                              name="giftMessage"
+                              onChange={function onChange}
+                              onBlur={function onBlur}
+                              ref={function ref}
+                              placeholder="Personal message to include with your gift (max 200 characters)"
+                              rows={2}
+                              maxLength={200}
+                              style={{
++                               width: "100%"
+-                               width: "100%"
++                               background: "#F5EDD8"
++                               border: "1px solid #D8C8A8"
++                               borderBottom: "1px solid #C0A880"
++                               color: "#18100A"
+-                               color: "rgb(24, 16, 10)"
++                               padding: "10px 12px"
++                               fontFamily: "'EB Garamond', serif"
++                               fontSize: "15px"
++                               outline: "none"
++                               transition: "border-color 400ms cubic-bezier(0.76, 0, 0.24, 1)"
++                               resize: "none"
+-                               resize: "none"
+-                               background-image: "initial"
+-                               background-position-x: "initial"
+-                               background-position-y: "initial"
+-                               background-size: "initial"
+-                               background-repeat: "initial"
+-                               background-attachment: "initial"
+-                               background-origin: "initial"
+-                               background-clip: "initial"
+-                               background-color: "rgb(245, 237, 216)"
+-                               border-top-width: "1px"
+-                               border-right-width: "1px"
+-                               border-left-width: "1px"
+-                               border-top-style: "solid"
+-                               border-right-style: "solid"
+-                               border-left-style: "solid"
+-                               border-top-color: "rgb(216, 200, 168)"
+-                               border-right-color: "rgb(216, 200, 168)"
+-                               border-left-color: "rgb(216, 200, 168)"
+-                               border-image-source: "initial"
+-                               border-image-slice: "initial"
+-                               border-image-width: "initial"
+-                               border-image-outset: "initial"
+-                               border-image-repeat: "initial"
+-                               border-bottom-width: "1px"
+-                               border-bottom-style: "solid"
+-                               border-bottom-color: "rgb(192, 168, 128)"
+-                               padding-top: "10px"
+-                               padding-right: "12px"
+-                               padding-bottom: "10px"
+-                               padding-left: "12px"
+-                               font-family: "\"EB Garamond\", serif"
+-                               font-size: "15px"
+-                               outline-color: "initial"
+-                               outline-style: "none"
+-                               outline-width: "initial"
+-                               transition-behavior: "normal"
+-                               transition-duration: "400ms"
+-                               transition-timing-function: "cubic-bezier(0.76, 0, 0.24, 1)"
+-                               transition-delay: "0s"
+-                               transition-property: "border-color"
+                              }}
+                              onFocus={function onFocus}
+                            >
+                        ...
+            ...
+        ...
+      ...
+ 
+[browser] Uncaught Error: Internal Next.js error: Router action dispatched before initialization.
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" className="cormorant_...">
+                          <body
+                            style={{
++                             background: "#F5EDD8"
++                             overflowX: "hidden"
+-                             background-image: "initial"
+-                             background-position-x: "initial"
+-                             background-position-y: "initial"
+-                             background-size: "initial"
+-                             background-repeat: "initial"
+-                             background-attachment: "initial"
+-                             background-origin: "initial"
+-                             background-clip: "initial"
+-                             background-color: "rgb(245, 237, 216)"
+-                             overflow-x: "hidden"
+                            }}
+                          >
+                  ...
+ 
+[browser] Image with src "/images/bottle-editorial.png" has "fill" prop and "sizes" prop of "100vw", but image is not rendered at full viewport width. Please adjust "sizes" to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] React does not recognize the `defaultMuted` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `defaultmuted` instead. If you accidentally passed it from a parent component, remove it from the DOM element. 
+React does not recognize the `defaultMuted` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `defaultmuted` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+[browser] React does not recognize the `defaultMuted` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `defaultmuted` instead. If you accidentally passed it from a parent component, remove it from the DOM element. 
+[browser] React does not recognize the `defaultMuted` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `defaultmuted` instead. If you accidentally passed it from a parent component, remove it from the DOM element. 
+^C

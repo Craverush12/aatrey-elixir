@@ -19,13 +19,13 @@ export default function HimalayanLandscape() {
       // Parallax on placeholder div (real image: use img element)
       if (imgRef.current) {
         gsap.to(imgRef.current, {
-          yPercent:      -15,
+          yPercent:      -8,
           ease:          'none',
           scrollTrigger: {
             trigger:    sectionRef.current,
             start:      'top bottom',
             end:        'bottom top',
-            scrub:      true,
+            scrub:      1.1,
           },
         });
       }
@@ -57,13 +57,14 @@ export default function HimalayanLandscape() {
       style={{
         position:   'relative',
         minHeight:  '70vh',
+        background: T.ink,
         overflow:   'hidden',
         display:    'flex',
         alignItems: 'flex-end',
       }}
     >
       {/* Background image */}
-      <div ref={imgRef} style={{ position: 'absolute', inset: '-10%' }}>
+      <div ref={imgRef} style={{ position: 'absolute', inset: '-14% 0' }}>
         <Image
           src="/images/arrival-still-life.png"
           alt="BURANSH bottle on wooden tray — Himalayan mountains at sunset, Uttarakhand"

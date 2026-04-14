@@ -8,10 +8,10 @@ import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
 
 const CAROUSEL = [
-  { src: '/images/bottle-editorial.png',    alt: 'BURANSH 750ml studio editorial — dark background' },
   { src: '/images/bottle-pour.png',         alt: 'BURANSH Himalayan Rhododendron Concentrate being poured' },
   { src: '/images/arrival-still-life.png',  alt: 'BURANSH bottle on wooden tray — Himalayan sunset' },
   { src: '/images/gifting-collection.png',  alt: 'BURANSH gifting collection — crate with four bottles' },
+  { src: '/images/buransh-flower.png',      alt: 'Fresh Himalayan buransh blossoms used for the floral concentrate' },
 ];
 
 export default function WhatItIs() {
@@ -25,7 +25,13 @@ export default function WhatItIs() {
       }}
     >
       <style>{`
-        @media(max-width:767px){.what-sticky-panel{position:static!important;min-height:300px!important}.what-sticky-panel>div:first-child{min-height:300px!important}}
+        @media(max-width:767px){
+          .what-sticky-panel{position:static!important;top:auto!important;min-height:auto!important;background:${T.ink}!important}
+          .what-carousel-stage{min-height:clamp(360px,68svh,520px)!important;background:${T.ink}!important}
+          .what-carousel-image{object-fit:cover!important;object-position:center center!important}
+          .what-carousel-dots{padding:14px 0 18px!important}
+          .what-copy{padding:40px 24px 56px!important}
+        }
       `}</style>
       <div
         style={{
@@ -46,9 +52,10 @@ export default function WhatItIs() {
           }}
         >
           {/* Image area */}
-          <div style={{ position: 'relative', width: '100%', minHeight: '560px' }}>
+          <div className="what-carousel-stage" style={{ position: 'relative', width: '100%', minHeight: '560px' }}>
             {CAROUSEL.map((img, i) => (
               <div
+                className="what-carousel-slide"
                 key={img.src}
                 style={{
                   position:   'absolute',
@@ -61,6 +68,7 @@ export default function WhatItIs() {
                   src={img.src}
                   alt={img.alt}
                   fill
+                  className="what-carousel-image"
                   style={{ objectFit: 'contain', objectPosition: 'center' }}
                   sizes="(max-width: 768px) 100vw, 42vw"
                   priority={i === 0}
@@ -71,6 +79,7 @@ export default function WhatItIs() {
 
           {/* Dot navigation */}
           <div
+            className="what-carousel-dots"
             style={{
               display:        'flex',
               justifyContent: 'center',
@@ -99,7 +108,7 @@ export default function WhatItIs() {
         </div>
 
         {/* Right — scrolling specs */}
-        <div style={{ padding: 'clamp(48px, 6vw, 80px) clamp(32px, 5vw, 64px)' }}>
+        <div className="what-copy" style={{ padding: 'clamp(48px, 6vw, 80px) clamp(32px, 5vw, 64px)' }}>
           {/* What it is */}
           <p
             style={{

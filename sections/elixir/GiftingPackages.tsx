@@ -7,6 +7,7 @@ import { BRAND } from '@/lib/brand-content';
 export default function GiftingPackages() {
   return (
     <section
+      className="gifting-section"
       style={{
         background:  T.parchment,
         padding:     '80px clamp(24px, 8vw, 120px)',
@@ -45,8 +46,18 @@ export default function GiftingPackages() {
         <OrnamentLine color={T.border} width={80} />
       </div>
 
+      <style>{`
+        @media(max-width:480px){.gifting-grid{grid-template-columns:1fr!important}}
+        @media(min-width:481px) and (max-width:767px){.gifting-grid{grid-template-columns:repeat(2,1fr)!important}}
+        @media(max-width:767px){
+          .gifting-feature{width:calc(100% + 48px)!important;margin:0 -24px 28px!important;aspect-ratio:4/5!important}
+          .gifting-feature-image{object-fit:cover!important;object-position:center center!important}
+        }
+      `}</style>
+
       {/* Collection feature image — full-width */}
       <div
+        className="gifting-feature"
         style={{
           width:        '100%',
           position:     'relative',
@@ -60,15 +71,12 @@ export default function GiftingPackages() {
           src="/images/gifting-collection.png"
           alt="BURANSH gifting collection — wooden crate with four bottles, harvest certificate and origin booklet"
           fill
+          className="gifting-feature-image"
           style={{ objectFit: 'contain', objectPosition: 'center' }}
           sizes="(max-width: 768px) 100vw, 90vw"
         />
       </div>
 
-      <style>{`
-        @media(max-width:480px){.gifting-grid{grid-template-columns:1fr!important}}
-        @media(min-width:481px) and (max-width:767px){.gifting-grid{grid-template-columns:repeat(2,1fr)!important}}
-      `}</style>
       <div
         className="gifting-grid"
         style={{

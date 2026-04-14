@@ -1,6 +1,31 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { T } from '@/lib/tokens';
 
 export default function MontageSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const ensurePlayback = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      void video.play().catch(() => {});
+    };
+
+    ensurePlayback();
+    video.addEventListener('loadeddata', ensurePlayback);
+    video.addEventListener('canplay', ensurePlayback);
+
+    return () => {
+      video.removeEventListener('loadeddata', ensurePlayback);
+      video.removeEventListener('canplay', ensurePlayback);
+    };
+  }, []);
+
   return (
     <section
       style={{
@@ -13,16 +38,20 @@ export default function MontageSection() {
     >
       {/* Autoplay harvest montage */}
       <video
+        ref={videoRef}
         autoPlay
         muted
+        defaultMuted
         loop
         playsInline
+        preload="auto"
+        disablePictureInPicture
         style={{
-          position:   'absolute',
-          inset:      0,
-          width:      '100%',
-          height:     '100%',
-          objectFit:  'cover',
+          position:       'absolute',
+          inset:          0,
+          width:          '100%',
+          height:         '100%',
+          objectFit:      'cover',
           objectPosition: 'center',
         }}
       >
@@ -78,7 +107,7 @@ export default function MontageSection() {
             maxWidth:      '720px',
           }}
         >
-          Every bottle begins here — at 2,500 metres, by hand.
+          Every bottle begins here - at 2,500 metres, by hand.
         </h2>
       </div>
     </section>

@@ -50,10 +50,23 @@ export default function Hero() {
       <style>{`
         @media(max-width:767px){
           .hero-bottle-panel{display:none!important}
-          .hero-section{display:block!important}
-          .hero-left-panel{min-height:100svh;flex-direction:column!important;align-items:stretch!important;padding-top:0!important}
-          .hero-mobile-bottle{display:block!important}
-          .hero-left-text{padding-top:40px!important}
+          .hero-section{display:block!important;min-height:100svh!important}
+          .hero-left-panel{min-height:100svh!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-end!important;padding:92px 20px 36px!important;background:${T.ink}!important}
+          .hero-mobile-bottle{display:block!important;position:absolute!important;inset:0!important;width:auto!important;height:auto!important;margin:0!important;border-bottom:none!important;z-index:0!important}
+          .hero-mobile-bottle-image{object-fit:cover!important;object-position:center 20%!important;filter:brightness(.7) saturate(.9)!important}
+          .hero-mobile-overlay{display:block!important;background:linear-gradient(to bottom, rgba(24,16,10,.38) 0%, rgba(24,16,10,.16) 28%, rgba(24,16,10,.5) 60%, rgba(24,16,10,.92) 100%)!important}
+          .hero-left-text{padding-top:0!important;padding-left:0!important;min-height:calc(100svh - 128px)!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important}
+          .hero-side-label,.hero-rule,.hero-bg-wash{display:none!important}
+          .hero-prelabel{margin-bottom:18px!important;gap:10px!important}
+          .hero-prelabel p{color:${T.ivory}CC!important}
+          .hero-headline-line{font-size:clamp(40px,15vw,64px)!important;line-height:0.94!important;letter-spacing:-1px!important}
+          .hero-headline-line,.hero-copy,.hero-meta p{color:${T.ivory}!important}
+          .hero-copy{font-size:16px!important;line-height:1.6!important;max-width:none!important;opacity:.84!important}
+          .hero-ornament{opacity:.6!important}
+          .hero-cta-group{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin-top:24px!important}
+          .hero-cta-group > *{width:100%!important}
+          .hero-cta-secondary{border-color:${T.ivory}66!important;color:${T.ivory}!important;background:rgba(24,16,10,.18)!important}
+          .hero-meta{display:none!important}
         }
       `}</style>
 
@@ -72,23 +85,34 @@ export default function Hero() {
         {/* Mobile-only bottle strip — hidden on desktop */}
         <div
           className="hero-mobile-bottle"
+          aria-hidden="true"
           style={{
-            display:    'none',
-            width:      '100%',
-            height:     '300px',
-            background: T.ink,
-            position:   'relative',
-            overflow:   'hidden',
-            flexShrink: 0,
+            display:      'none',
+            width:        '100%',
+            height:       '300px',
+            background:   T.ink,
+            position:     'relative',
+            overflow:     'hidden',
+            flexShrink:   0,
+            pointerEvents:'none',
           }}
         >
           <Image
             src="/images/bottle-editorial.png"
-            alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate"
+            alt=""
             fill
             priority
+            className="hero-mobile-bottle-image"
             style={{ objectFit: 'contain', objectPosition: 'center' }}
             sizes="100vw"
+          />
+          <div
+            className="hero-mobile-overlay"
+            style={{
+              position:   'absolute',
+              inset:      0,
+              background: `linear-gradient(to bottom, rgba(24,16,10,0.52) 0%, rgba(24,16,10,0.2) 34%, ${T.ivory} 88%)`,
+            }}
           />
         </div>
 
@@ -96,6 +120,7 @@ export default function Hero() {
 
         {/* Radial gradient bg wash */}
         <div
+          className="hero-bg-wash"
           aria-hidden="true"
           style={{
             position:      'absolute',
@@ -107,6 +132,7 @@ export default function Hero() {
 
         {/* Vertical side label */}
         <div
+          className="hero-side-label"
           aria-hidden="true"
           style={{
             position:        'absolute',
@@ -150,7 +176,7 @@ export default function Hero() {
         <div className="hero-left-text" style={{ position: 'relative', zIndex: 2, paddingLeft: 'clamp(0px, 4vw, 40px)' }}>
           {/* Pre-label */}
           <div
-            className="hero-anim"
+            className="hero-anim hero-prelabel"
             style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '30px' }}
           >
             <div style={{ width: '32px', height: '1px', background: T.crimson }} />
@@ -170,7 +196,7 @@ export default function Hero() {
           {/* H1 */}
           <h1>
             <span
-              className="hero-anim"
+              className="hero-anim hero-headline-line"
               style={{
                 display:       'block',
                 fontFamily:    `'Cormorant Garamond', serif`,
@@ -185,7 +211,7 @@ export default function Hero() {
               {BRAND.heroCopy.line1}
             </span>
             <span
-              className="hero-anim"
+              className="hero-anim hero-headline-line"
               style={{
                 display:       'block',
                 fontFamily:    `'Cormorant Garamond', serif`,
@@ -201,13 +227,13 @@ export default function Hero() {
           </h1>
 
           {/* Ornament */}
-          <div className="hero-anim" style={{ margin: '26px 0' }}>
+          <div className="hero-anim hero-ornament" style={{ margin: '26px 0' }}>
             <OrnamentLine color={T.border} width={160} />
           </div>
 
           {/* Body copy */}
           <p
-            className="hero-anim"
+            className="hero-anim hero-copy"
             style={{
               fontFamily: `'EB Garamond', serif`,
               fontSize:   'clamp(14px, 1.5vw, 17px)',
@@ -223,16 +249,16 @@ export default function Hero() {
 
           {/* CTAs */}
           <div
-            className="hero-anim"
+            className="hero-anim hero-cta-group"
             style={{ display: 'flex', gap: '10px', marginTop: '32px', flexWrap: 'wrap' }}
           >
-            <CrimsonBtn href="/elixir#order">{BRAND.heroCopy.cta1}</CrimsonBtn>
-            <GhostBtn href="/staycation">{BRAND.heroCopy.cta2}</GhostBtn>
+            <CrimsonBtn href="/elixir#order" className="hero-cta-primary">{BRAND.heroCopy.cta1}</CrimsonBtn>
+            <GhostBtn href="/staycation" className="hero-cta-secondary">{BRAND.heroCopy.cta2}</GhostBtn>
           </div>
 
           {/* Meta tag */}
           <div
-            className="hero-anim"
+            className="hero-anim hero-meta"
             style={{ marginTop: '36px', display: 'flex', alignItems: 'center', gap: '12px', opacity: 0.45 }}
           >
             <div style={{ width: '20px', height: '1px', background: T.muted }} />
