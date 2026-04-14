@@ -45,7 +45,7 @@ export default function StaycationHero() {
           alt="BURANSH bottle on wooden tray at sunset — Himalayan mountains, Uttarakhand"
           fill
           priority
-          style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
+          style={{ objectFit: 'contain', objectPosition: 'center 60%' }}
           sizes="100vw"
         />
       </div>

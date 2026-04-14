@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import OrnamentLine from '@/components/ui/OrnamentLine';
 import { T } from '@/lib/tokens';
 
@@ -111,16 +112,20 @@ function WaitlistForm({ product }: WaitlistFormProps) {
 export default function ComingSoon() {
   const products = [
     {
-      id:       'jam' as const,
-      name:     'BURANSH Jam',
-      desc:     'Rhododendron arboreum fruit preserve. Single-origin. No pectin. No stabilisers. No preservatives. The same single-origin commitment in a preserve form. The wild harvest — available after the next bloom season.',
-      season:   'COMING SOON · Next harvest season',
+      id:          'jam' as const,
+      name:        'BURANSH Jam',
+      desc:        'Rhododendron arboreum fruit preserve. Single-origin. No pectin. No stabilisers. No preservatives. The same single-origin commitment in a preserve form. The wild harvest — available after the next bloom season.',
+      season:      'COMING SOON · Next harvest season',
+      imageSrc:    '/images/buransh-jam.png' as string | null,
+      imagePlaceholder: null,
     },
     {
-      id:       'tea' as const,
-      name:     'BURANSH Tea',
-      desc:     'The flower dried slowly at altitude during the post-bloom dry season. No caffeine. No flavouring. No blending with other botanicals. The elixir in its most meditative form — steeped, not pressed.',
-      season:   'COMING SOON · Dry season',
+      id:          'tea' as const,
+      name:        'BURANSH Tea',
+      desc:        'The flower dried slowly at altitude during the post-bloom dry season. No caffeine. No flavouring. No blending with other botanicals. The elixir in its most meditative form — steeped, not pressed.',
+      season:      'COMING SOON · Dry season',
+      imageSrc:    '/images/Buransh tea with rhododendron petals.png' as string | null,
+      imagePlaceholder: null,
     },
   ];
 
@@ -174,10 +179,43 @@ export default function ComingSoon() {
             key={p.id}
             style={{
               background: T.ivory,
-              padding:    '40px 32px',
+              padding:    '0',
               border:     `1px solid ${T.border}`,
+              overflow:   'hidden',
             }}
           >
+            {/* Product image or placeholder */}
+            {p.imageSrc ? (
+              <div style={{ position: 'relative', width: '100%', height: '260px', background: T.parchment, overflow: 'hidden' }}>
+                <Image
+                  src={p.imageSrc}
+                  alt={p.name}
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            ) : (
+              <div
+                style={{
+                  width:          '100%',
+                  height:         '260px',
+                  background:     T.parchment,
+                  border:         `1px dashed ${T.border}`,
+                  display:        'flex',
+                  alignItems:     'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <p style={{ fontFamily: `'EB Garamond', serif`, fontStyle: 'italic', color: T.pale, fontSize: '13px', textAlign: 'center', padding: '0 24px' }}>
+                  {p.imagePlaceholder}
+                </p>
+              </div>
+            )}
+
+            {/* Card body */}
+            <div style={{ padding: '32px 32px 40px' }}>
+
             {/* Coming soon badge */}
             <span
               style={{
@@ -239,6 +277,7 @@ export default function ComingSoon() {
             </p>
 
             <WaitlistForm product={p.id} />
+            </div>{/* /card body */}
           </div>
         ))}
       </div>

@@ -45,13 +45,13 @@ export default function GiftingPackages() {
         <OrnamentLine color={T.border} width={80} />
       </div>
 
-      {/* Collection feature image */}
+      {/* Collection feature image — full-width */}
       <div
         style={{
           width:        '100%',
+          position:     'relative',
+          aspectRatio:  '16/7',
           background:   T.linen,
-          display:      'flex',
-          justifyContent: 'center',
           marginBottom: '32px',
           overflow:     'hidden',
         }}
@@ -59,9 +59,9 @@ export default function GiftingPackages() {
         <Image
           src="/images/gifting-collection.png"
           alt="BURANSH gifting collection — wooden crate with four bottles, harvest certificate and origin booklet"
-          width={680}
-          height={680}
-          style={{ objectFit: 'contain', maxHeight: '480px', width: 'auto' }}
+          fill
+          style={{ objectFit: 'contain', objectPosition: 'center' }}
+          sizes="(max-width: 768px) 100vw, 90vw"
         />
       </div>
 

@@ -51,7 +51,9 @@ export default function Hero() {
         @media(max-width:767px){
           .hero-bottle-panel{display:none!important}
           .hero-section{display:block!important}
-          .hero-left-panel{min-height:100svh}
+          .hero-left-panel{min-height:100svh;flex-direction:column!important;align-items:stretch!important;padding-top:0!important}
+          .hero-mobile-bottle{display:block!important}
+          .hero-left-text{padding-top:40px!important}
         }
       `}</style>
 
@@ -67,6 +69,29 @@ export default function Hero() {
           overflow:   'hidden',
         }}
       >
+        {/* Mobile-only bottle strip — hidden on desktop */}
+        <div
+          className="hero-mobile-bottle"
+          style={{
+            display:    'none',
+            width:      '100%',
+            height:     '300px',
+            background: T.ink,
+            position:   'relative',
+            overflow:   'hidden',
+            flexShrink: 0,
+          }}
+        >
+          <Image
+            src="/images/bottle-editorial.png"
+            alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate"
+            fill
+            priority
+            style={{ objectFit: 'contain', objectPosition: 'center' }}
+            sizes="100vw"
+          />
+        </div>
+
         <GrainOverlay />
 
         {/* Radial gradient bg wash */}
@@ -122,7 +147,7 @@ export default function Hero() {
         />
 
         {/* Text block */}
-        <div style={{ position: 'relative', zIndex: 2, paddingLeft: 'clamp(0px, 4vw, 40px)' }}>
+        <div className="hero-left-text" style={{ position: 'relative', zIndex: 2, paddingLeft: 'clamp(0px, 4vw, 40px)' }}>
           {/* Pre-label */}
           <div
             className="hero-anim"

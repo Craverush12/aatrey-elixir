@@ -21,7 +21,6 @@ export default function HomePage() {
       <ValuePillars />
       <ProductIntro />
       <Testimonials />
-      <WomenTeaser />
       <MontageSection />
       <ComplianceSection />
       <HimalayanLandscape />

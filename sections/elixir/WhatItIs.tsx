@@ -1,10 +1,22 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import ComplianceBadges from '@/components/ComplianceBadges';
 import OrnamentLine from '@/components/ui/OrnamentLine';
 import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
 
+const CAROUSEL = [
+  { src: '/images/bottle-editorial.png',    alt: 'BURANSH 750ml studio editorial — dark background' },
+  { src: '/images/bottle-pour.png',         alt: 'BURANSH Himalayan Rhododendron Concentrate being poured' },
+  { src: '/images/arrival-still-life.png',  alt: 'BURANSH bottle on wooden tray — Himalayan sunset' },
+  { src: '/images/gifting-collection.png',  alt: 'BURANSH gifting collection — crate with four bottles' },
+];
+
 export default function WhatItIs() {
+  const [active, setActive] = useState(0);
+
   return (
     <section
       style={{
@@ -13,7 +25,7 @@ export default function WhatItIs() {
       }}
     >
       <style>{`
-        @media(max-width:767px){.what-sticky-panel{position:static!important;min-height:300px!important}.what-sticky-panel>div{min-height:300px!important}}
+        @media(max-width:767px){.what-sticky-panel{position:static!important;min-height:300px!important}.what-sticky-panel>div:first-child{min-height:300px!important}}
       `}</style>
       <div
         style={{
@@ -21,25 +33,68 @@ export default function WhatItIs() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
         }}
       >
-        {/* Left — sticky box image */}
+        {/* Left — sticky product carousel */}
         <div
           className="what-sticky-panel"
           style={{
-            position:   'sticky',
-            top:        '80px',
-            alignSelf:  'flex-start',
-            minHeight:  '500px',
-            overflow:   'hidden',
+            position:  'sticky',
+            top:       '80px',
+            alignSelf: 'flex-start',
+            minHeight: '500px',
+            overflow:  'hidden',
+            background: T.parchment,
           }}
         >
-          <div style={{ position: 'relative', width: '100%', minHeight: '600px' }}>
-            <Image
-              src="/images/box-design-and-copy.png"
-              alt="BURANSH product box — design and copy detail, AATREY ELIXIR packaging"
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              sizes="(max-width: 768px) 100vw, 42vw"
-            />
+          {/* Image area */}
+          <div style={{ position: 'relative', width: '100%', minHeight: '560px' }}>
+            {CAROUSEL.map((img, i) => (
+              <div
+                key={img.src}
+                style={{
+                  position:   'absolute',
+                  inset:      0,
+                  transition: 'opacity 500ms ease',
+                  opacity:    i === active ? 1 : 0,
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  style={{ objectFit: 'contain', objectPosition: 'center' }}
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  priority={i === 0}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Dot navigation */}
+          <div
+            style={{
+              display:        'flex',
+              justifyContent: 'center',
+              gap:            '8px',
+              padding:        '16px 0 20px',
+            }}
+          >
+            {CAROUSEL.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                aria-label={`View image ${i + 1}`}
+                style={{
+                  width:        i === active ? '24px' : '6px',
+                  height:       '6px',
+                  borderRadius: '3px',
+                  background:   i === active ? T.crimson : `${T.umber}50`,
+                  border:       'none',
+                  cursor:       'pointer',
+                  padding:      0,
+                  transition:   'all 300ms ease',
+                }}
+              />
+            ))}
           </div>
         </div>
 
@@ -107,11 +162,11 @@ export default function WhatItIs() {
               >
                 <div
                   style={{
-                    width:      '6px',
-                    height:     '6px',
+                    width:        '6px',
+                    height:       '6px',
                     borderRadius: '50%',
-                    background: T.green,
-                    flexShrink: 0,
+                    background:   T.green,
+                    flexShrink:   0,
                   }}
                 />
                 <p
@@ -136,9 +191,9 @@ export default function WhatItIs() {
           {/* Why altitude matters */}
           <div
             style={{
-              background:  T.parchment,
-              padding:     '24px',
-              borderLeft:  `3px solid ${T.crimson}`,
+              background: T.parchment,
+              padding:    '24px',
+              borderLeft: `3px solid ${T.crimson}`,
             }}
           >
             <p

@@ -104,10 +104,10 @@ function OrderSummary({
       {/* Bottle image */}
       <div style={{ position: 'relative', width: '100%', height: '200px', marginBottom: '20px', overflow: 'hidden' }}>
         <Image
-          src="/images/full-box.png"
-          alt="BURANSH full packaging box — AATREY ELIXIR"
+          src="/images/bottle-editorial.png"
+          alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate"
           fill
-          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          style={{ objectFit: 'contain', objectPosition: 'center' }}
           sizes="300px"
         />
       </div>

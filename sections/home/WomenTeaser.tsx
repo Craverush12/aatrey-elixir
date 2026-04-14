@@ -87,8 +87,8 @@ export default function WomenTeaser() {
           }}
         >
           <Image
-            src="/images/female-buransh-women.PNG"
-            alt="Pahadi woman harvesting Rhododendron blooms — Project Aatmanirbhar, Uttarakhand"
+            src="/images/flower-other-pictures.png"
+            alt="Rhododendron arboreum in bloom — Uttarakhand harvest, Project Aatmanirbhar"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center top' }}
             sizes="(max-width: 768px) 100vw, 50vw"

@@ -19,6 +19,25 @@ export default function StaycationIncludes() {
           alignItems:          'center',
         }}
       >
+        {/* Full-width image placeholder — asset TBC */}
+        <div
+          style={{
+            gridColumn:     '1 / -1',
+            width:          '100%',
+            height:         '340px',
+            background:     T.parchment,
+            border:         `1px dashed ${T.border}`,
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+            marginBottom:   '8px',
+          }}
+        >
+          <p style={{ fontFamily: `'EB Garamond', serif`, fontStyle: 'italic', color: T.pale, fontSize: '13px', textAlign: 'center', padding: '0 24px' }}>
+            Staycation lifestyle photography · TBC
+          </p>
+        </div>
+
         {/* Left — label + heading */}
         <div>
           <p

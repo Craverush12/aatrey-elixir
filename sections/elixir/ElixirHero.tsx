@@ -50,7 +50,7 @@ export default function ElixirHero() {
           alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate — dark studio editorial"
           fill
           priority
-          style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          style={{ objectFit: 'contain', objectPosition: 'center 30%' }}
           sizes="100vw"
         />
       </div>

@@ -80,6 +80,24 @@ export default function JourneySteps() {
           <OrnamentLine color={`${T.umber}60`} width={80} />
         </div>
 
+        {/* Harvest photography placeholder — asset TBC */}
+        <div
+          style={{
+            width:          '100%',
+            height:         '400px',
+            background:     `${T.umber}15`,
+            border:         `1px dashed ${T.umber}40`,
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'center',
+            marginBottom:   '48px',
+          }}
+        >
+          <p style={{ fontFamily: `'EB Garamond', serif`, fontStyle: 'italic', color: `${T.ivory}30`, fontSize: '13px', textAlign: 'center', padding: '0 24px' }}>
+            Harvest journey photography · TBC
+          </p>
+        </div>
+
         <style>{`
           @media(max-width:480px){.journey-grid{grid-template-columns:1fr!important}}
           @media(min-width:481px) and (max-width:767px){.journey-grid{grid-template-columns:repeat(2,1fr)!important}}
