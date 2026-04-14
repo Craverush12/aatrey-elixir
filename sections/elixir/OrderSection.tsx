@@ -104,8 +104,8 @@ function OrderSummary({
       {/* Bottle image */}
       <div style={{ position: 'relative', width: '100%', height: '200px', marginBottom: '20px', overflow: 'hidden' }}>
         <Image
-          src="/images/bottle-handheld.jpg"
-          alt="BURANSH bottle"
+          src="/images/full-box.png"
+          alt="BURANSH full packaging box — AATREY ELIXIR"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center top' }}
           sizes="300px"

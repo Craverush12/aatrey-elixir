@@ -4,6 +4,7 @@ import ValuePillars      from '@/sections/home/ValuePillars';
 import ProductIntro      from '@/sections/home/ProductIntro';
 import Testimonials      from '@/sections/home/Testimonials';
 import WomenTeaser       from '@/sections/home/WomenTeaser';
+import MontageSection   from '@/sections/home/MontageSection';
 import ComplianceSection from '@/sections/home/ComplianceSection';
 import HimalayanLandscape from '@/sections/home/HimalayanLandscape';
 import ComingSoon        from '@/sections/home/ComingSoon';
@@ -21,6 +22,7 @@ export default function HomePage() {
       <ProductIntro />
       <Testimonials />
       <WomenTeaser />
+      <MontageSection />
       <ComplianceSection />
       <HimalayanLandscape />
       <ComingSoon />

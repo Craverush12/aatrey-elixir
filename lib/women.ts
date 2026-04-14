@@ -21,7 +21,7 @@ export const WOMEN: Woman[] = [
     village:  '// TODO: confirm with client before launch — [Woman 1 village]',
     years:    '// TODO: confirm with client before launch — [years harvesting]',
     quote:    '// TODO: confirm with client before launch — [direct quote, translated from Pahadi/Hindi]',
-    imageSrc: null,
+    imageSrc: '/images/female-buransh-women.PNG',
     imageAlt: 'Portrait of a Pahadi woman harvesting Rhododendron blooms in Uttarakhand',
   },
   {
@@ -29,15 +29,15 @@ export const WOMEN: Woman[] = [
     village:  '// TODO: confirm with client before launch — [Woman 2 village]',
     years:    '// TODO: confirm with client before launch — [years harvesting]',
     quote:    '// TODO: confirm with client before launch — [direct quote, translated from Pahadi/Hindi]',
-    imageSrc: null,
-    imageAlt: 'Portrait of a Pahadi woman with hands at work in the Rhododendron harvest',
+    imageSrc: '/images/village-women-plucking.PNG',
+    imageAlt: 'Pahadi women at work in the Rhododendron harvest, Uttarakhand',
   },
   {
     name:     '// TODO: confirm with client before launch — [Woman 3 name]',
     village:  '// TODO: confirm with client before launch — [Woman 3 village]',
     years:    '// TODO: confirm with client before launch — [years harvesting]',
     quote:    '// TODO: confirm with client before launch — [direct quote, translated from Pahadi/Hindi]',
-    imageSrc: null,
-    imageAlt: 'Wide portrait of a Pahadi woman within the Rhododendron forest, Uttarakhand',
+    imageSrc: '/images/buransh-flower-plucked.PNG',
+    imageAlt: 'Rhododendron arboreum bloom — freshly harvested, Uttarakhand',
   },
 ];

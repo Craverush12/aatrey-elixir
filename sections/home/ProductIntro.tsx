@@ -69,8 +69,8 @@ export default function ProductIntro() {
           }}
         >
           <Image
-            src="/images/bottle-handheld.jpg"
-            alt="BURANSH Himalayan Rhododendron Floral Concentrate — hand-held amber bottle"
+            src="/images/bottle-pour.png"
+            alt="BURANSH Himalayan Rhododendron Floral Concentrate — being poured"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
             sizes="(max-width: 768px) 100vw, 50vw"

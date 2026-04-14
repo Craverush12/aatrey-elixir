@@ -34,8 +34,8 @@ export default function WhatItIs() {
         >
           <div style={{ position: 'relative', width: '100%', minHeight: '600px' }}>
             <Image
-              src="/images/box-packaging.jpg"
-              alt="BURANSH product box on stone surface — AATREY ELIXIR packaging"
+              src="/images/box-design-and-copy.png"
+              alt="BURANSH product box — design and copy detail, AATREY ELIXIR packaging"
               fill
               style={{ objectFit: 'cover', objectPosition: 'center' }}
               sizes="(max-width: 768px) 100vw, 42vw"

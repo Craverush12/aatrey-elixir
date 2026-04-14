@@ -61,18 +61,16 @@ export default function DocumentarySection() {
           </p>
         </div>
 
-        {/* Film placeholder */}
+        {/* Montage video */}
         <div
           style={{
-            maxWidth:       '860px',
-            margin:         '0 auto',
-            position:       'relative',
-            aspectRatio:    '16/9',
-            background:     '#0E0A06',
-            border:         `1px solid ${T.umber}40`,
-            display:        'flex',
-            alignItems:     'center',
-            justifyContent: 'center',
+            maxWidth:    '860px',
+            margin:      '0 auto',
+            position:    'relative',
+            aspectRatio: '16/9',
+            background:  '#0E0A06',
+            border:      `1px solid ${T.umber}40`,
+            overflow:    'hidden',
           }}
         >
           {/* Corner ornaments */}
@@ -81,13 +79,14 @@ export default function DocumentarySection() {
               key={corner}
               aria-hidden="true"
               style={{
-                position:   'absolute',
-                width:      '20px',
-                height:     '20px',
-                borderTop:  corner.startsWith('top')    ? `1px solid ${T.gold}50` : 'none',
+                position:     'absolute',
+                zIndex:       2,
+                width:        '20px',
+                height:       '20px',
+                borderTop:    corner.startsWith('top')    ? `1px solid ${T.gold}50` : 'none',
                 borderBottom: corner.startsWith('bottom') ? `1px solid ${T.gold}50` : 'none',
-                borderLeft: corner.endsWith('Left')     ? `1px solid ${T.gold}50` : 'none',
-                borderRight:corner.endsWith('Right')    ? `1px solid ${T.gold}50` : 'none',
+                borderLeft:   corner.endsWith('Left')     ? `1px solid ${T.gold}50` : 'none',
+                borderRight:  corner.endsWith('Right')    ? `1px solid ${T.gold}50` : 'none',
                 top:    corner.startsWith('top')    ? '12px' : undefined,
                 bottom: corner.startsWith('bottom') ? '12px' : undefined,
                 left:   corner.endsWith('Left')     ? '12px' : undefined,
@@ -96,45 +95,21 @@ export default function DocumentarySection() {
             />
           ))}
 
-          {/* Play icon placeholder */}
-          <div style={{ textAlign: 'center' }}>
-            <div
-              aria-hidden="true"
-              style={{
-                width:       '60px',
-                height:      '60px',
-                borderRadius:'50%',
-                border:      `1px solid ${T.ivory}30`,
-                display:     'flex',
-                alignItems:  'center',
-                justifyContent: 'center',
-                margin:      '0 auto 16px',
-              }}
-            >
-              <div
-                style={{
-                  width:       0,
-                  height:      0,
-                  borderTop:   '10px solid transparent',
-                  borderBottom:'10px solid transparent',
-                  borderLeft:  `16px solid ${T.ivory}50`,
-                  marginLeft:  '3px',
-                }}
-              />
-            </div>
-            <p
-              style={{
-                fontFamily:    'sans-serif',
-                fontSize:      '7px',
-                letterSpacing: '4px',
-                textTransform: 'uppercase',
-                color:         `${T.ivory}30`,
-              }}
-            >
-              {/* TODO: confirm with client before launch — [documentary URL] */}
-              Documentary — Coming soon
-            </p>
-          </div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position:   'absolute',
+              inset:      0,
+              width:      '100%',
+              height:     '100%',
+              objectFit:  'cover',
+            }}
+          >
+            <source src="/images/buransh-flower-pluck-montage.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Film meta row */}
