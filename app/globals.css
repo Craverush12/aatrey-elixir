@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ─── Brand tokens via @theme (Tailwind v4 convention) ─── */
+@theme {
+  --color-ivory:     #F5EDD8;
+  --color-parchment: #EDE3C8;
+  --color-linen:     #E0D0B0;
+  --color-crimson:   #C4392B;
+  --color-crimson-d: #A02E20;
+  --color-gold:      #C4A030;
+  --color-umber:     #7A4E1E;
+  --color-ink:       #18100A;
+  --color-muted:     #9C8868;
+  --color-pale:      #A89878;
+  --color-border:    #D8C8A8;
+  --color-border-d:  #C0A880;
+  --color-green:     #3D5C3A;
+
+  --font-display: var(--font-cormorant), serif;
+  --font-body:    var(--font-eb-garamond), serif;
+  --font-deva:    var(--font-noto-devanagari), sans-serif;
+
+  --ease-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ─── CSS custom properties for JS access ─── */
+:root {
+  --ivory:     #F5EDD8;
+  --parchment: #EDE3C8;
+  --linen:     #E0D0B0;
+  --crimson:   #C4392B;
+  --crimson-d: #A02E20;
+  --gold:      #C4A030;
+  --umber:     #7A4E1E;
+  --ink:       #18100A;
+  --muted:     #9C8868;
+  --border:    #D8C8A8;
+  --border-d:  #C0A880;
+  --green:     #3D5C3A;
+  --ease:      cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ─── Resets ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: #F5EDD8;
+  color: #18100A;
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #F5EDD8;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4392B;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A02E20;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #C4392B #F5EDD8;
+}
+
+/* ─── Typography base ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+p, li, blockquote {
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+}
+
+/* ─── Grain texture utility ─── */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: multiply;
+}
+
+/* ─── Section spacing utility ─── */
+.section-pad {
+  padding: 80px clamp(24px, 8vw, 120px);
+}
+
+.section-pad-sm {
+  padding: 60px clamp(24px, 6vw, 80px);
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid #C4392B;
+  outline-offset: 3px;
+}
+
+/* ─── Link reset ─── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Image reset ─── */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Form base resets ─── */
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.4;
+  filter: invert(0.3);
+}
