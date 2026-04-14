@@ -41,7 +41,6 @@ export default function MontageSection() {
         ref={videoRef}
         autoPlay
         muted
-        defaultMuted
         loop
         playsInline
         preload="auto"
