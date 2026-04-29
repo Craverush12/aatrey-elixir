@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "buransh-copy-assets.jsx",
+    "buransh-evolved-system.jsx",
+    "buransh-full-blueprint.jsx",
   ]),
 ]);
 

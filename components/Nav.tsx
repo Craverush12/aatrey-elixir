@@ -11,7 +11,7 @@ const ROUTES = [
   { path: '/elixir',     label: 'Elixir',     sub: 'Product · Pairings · Order · Gifting' },
   { path: '/about',      label: 'About',      sub: 'Aatrey · Aatmanirbhar · Women · Film' },
   { path: '/staycation', label: 'Staycation', sub: 'Uttarakhand · Wilderness · Booking' },
-  { path: '/more',       label: 'More',       sub: 'Omakase · Coming soon · Compliance' },
+  { path: '/more',       label: 'More',       sub: 'Omakase · Private releases · Origin notes' },
 ];
 
 /* ── Fullscreen Overlay ──────────────────────────────────── */
@@ -22,18 +22,14 @@ function FullscreenNav({
   open:    boolean;
   onClose: () => void;
 }) {
-  const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<number | null>(null);
 
   useEffect(() => {
     if (open) {
-      const t = setTimeout(() => setMounted(true), 10);
-      // Lock body scroll when overlay is open
       document.body.style.overflow = 'hidden';
-      return () => clearTimeout(t);
-    } else {
-      setMounted(false);
-      document.body.style.overflow = '';
+      return () => {
+        document.body.style.overflow = '';
+      };
     }
   }, [open]);
 
@@ -46,7 +42,7 @@ function FullscreenNav({
     return () => document.removeEventListener('keydown', handler);
   }, [open, onClose]);
 
-  const visible = mounted && open;
+  const visible = open;
 
   return (
     <div
@@ -138,7 +134,7 @@ function FullscreenNav({
                   fontStyle:   hovered === i ? 'normal' : 'italic',
                   color:       hovered === i ? T.crimson : T.ivory,
                   lineHeight:  1,
-                  letterSpacing: '-0.5px',
+                  letterSpacing: '0',
                   transition:  `color 400ms ${T.ease}, font-style 300ms ${T.ease}`,
                 }}
               >
@@ -174,7 +170,7 @@ function FullscreenNav({
             transition:  `opacity 600ms ${T.ease} 420ms`,
           }}
         >
-          "Inherited, not manufactured."
+          &ldquo;Inherited, not manufactured.&rdquo;
         </p>
       </div>
 
@@ -285,14 +281,15 @@ export default function Nav() {
           right:         0,
           zIndex:        100,
           height:        '60px',
-          background:    scrolled ? `${T.ivory}F2` : 'transparent',
-          borderBottom:  scrolled ? `1px solid ${T.border}` : '1px solid transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          background:    scrolled ? `${T.ivory}F4` : 'rgba(245, 237, 216, 0.84)',
+          borderBottom:  `1px solid ${scrolled ? T.border : 'rgba(216, 200, 168, 0.58)'}`,
+          backdropFilter:'blur(14px)',
+          boxShadow:     scrolled ? `0 10px 30px rgba(24,16,10,0.08)` : `0 8px 24px rgba(24,16,10,0.05)`,
           display:       'flex',
           alignItems:    'center',
           justifyContent:'space-between',
           padding:       '0 clamp(20px, 5vw, 60px)',
-          transition:    `background 500ms ${T.ease}, border-color 500ms ${T.ease}`,
+          transition:    `background 500ms ${T.ease}, border-color 500ms ${T.ease}, box-shadow 500ms ${T.ease}`,
         }}
       >
         {/* Wordmark */}

@@ -1,67 +1,65 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { apiError, apiSuccess, parseJson } from '@/lib/api';
 import { verifySignature } from '@/lib/razorpay';
 import { appendRow } from '@/lib/sheets';
 import { sendTeamAlert, sendGuestConfirmation, orderConfirmationHtml } from '@/lib/email';
+import { paymentVerifySchema } from '@/lib/schemas';
 
 export async function POST(req: NextRequest) {
   try {
+    const parsed = await parseJson(req, paymentVerifySchema);
+    if (!parsed.success) return apiError(parsed.error);
+
     const {
       razorpay_order_id,
       razorpay_payment_id,
       razorpay_signature,
       formData,
-    } = await req.json();
-
-    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return NextResponse.json({ error: 'Missing payment fields' }, { status: 400 });
-    }
+    } = parsed.data;
 
     const valid = verifySignature(razorpay_order_id, razorpay_payment_id, razorpay_signature);
     if (!valid) {
-      return NextResponse.json({ error: 'Signature verification failed' }, { status: 400 });
+      return apiError('Signature verification failed');
     }
 
-    // Write to Google Sheets ORDERS tab
     await appendRow('ORDERS', [
-      formData?.name         ?? '',
-      formData?.email        ?? '',
-      formData?.phone        ?? '',
-      formData?.address      ?? '',
-      formData?.pincode      ?? '',
-      formData?.quantity     ?? '',
-      formData?.variant      ?? '',
-      formData?.type         ?? '',
-      formData?.giftMessage  ?? '',
-      formData?.amount       ?? '',
+      formData.name,
+      formData.email,
+      formData.phone,
+      formData.address,
+      formData.pincode,
+      formData.quantity,
+      formData.variant,
+      formData.type,
+      formData.giftMessage,
+      formData.amount ?? '',
       razorpay_order_id,
       razorpay_payment_id,
       'PAID',
     ]);
 
-    // Send confirmation email to customer
-    if (formData?.email) {
+    if (formData.email) {
       await sendGuestConfirmation(
         formData.email,
         'Order Confirmed',
         orderConfirmationHtml(
-          formData.name ?? 'Valued Customer',
-          formData.quantity ?? 1,
-          formData.variant ?? 'Standard'
+          formData.name || 'Valued Customer',
+          formData.quantity,
+          formData.variant || 'Standard'
         )
       );
     }
 
-    // Alert team
     await sendTeamAlert(
       'New Order Received',
-      `<p>New order from ${formData?.name ?? 'Unknown'} (${formData?.email}).</p>
-       <p>Quantity: ${formData?.quantity} · Variant: ${formData?.variant}</p>
+      `<p>New order from ${formData.name || 'Unknown'} (${formData.email || 'no email'}).</p>
+       <p>Quantity: ${formData.quantity} · Variant: ${formData.variant || '—'}</p>
        <p>Razorpay Order ID: ${razorpay_order_id}</p>`
     );
 
-    return NextResponse.json({ success: true });
+    return apiSuccess();
   } catch (err) {
     console.error('[payment-verify]', err);
-    return NextResponse.json({ error: 'Payment verification failed' }, { status: 500 });
+    return apiError('Payment verification failed', 500);
   }
 }

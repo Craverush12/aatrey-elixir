@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -69,7 +69,7 @@ export default function BetterThan() {
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ivory,
-              letterSpacing: '-0.3px',
+              letterSpacing: '0',
             }}
           >
             {BRAND.betterThan.headline}

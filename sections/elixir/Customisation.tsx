@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
@@ -40,7 +40,7 @@ function CustomisationInner() {
           fontWeight:    300,
           fontStyle:     'italic',
           color:         T.ink,
-          letterSpacing: '-0.3px',
+          letterSpacing: '0',
           marginBottom:  '12px',
         }}
       >
@@ -174,7 +174,19 @@ function CustomisationInner() {
 
 export default function Customisation() {
   return (
-    <Suspense fallback={<div style={{ height: '400px', background: T.ivory }} />}>
+    <Suspense
+      fallback={
+        <div
+          style={{
+            height: '400px',
+            background: T.ivory,
+            borderTop: `1px solid ${T.border}`,
+            borderBottom: `1px solid ${T.border}`,
+          }}
+          aria-label="Loading customisation options"
+        />
+      }
+    >
       <CustomisationInner />
     </Suspense>
   );

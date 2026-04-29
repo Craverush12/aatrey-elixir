@@ -43,14 +43,14 @@ export default function ElixirHero() {
     >
       <GrainOverlay />
 
-      {/* Editorial still */}
+      {/* Horizontal editorial still */}
       <div className="elixir-hero-img" style={{ position: 'absolute', inset: 0 }}>
         <Image
-          src="/images/bottle-editorial.png"
-          alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate — dark studio editorial"
+          src="/images/arrival-still-life.webp"
+          alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate in an Uttarakhand origin still life"
           fill
           priority
-          style={{ objectFit: 'contain', objectPosition: 'center 30%' }}
+          style={{ objectFit: 'cover', objectPosition: 'center center' }}
           sizes="100vw"
         />
       </div>
@@ -61,7 +61,7 @@ export default function ElixirHero() {
         style={{
           position:   'absolute',
           inset:      0,
-          background: 'linear-gradient(to top, rgba(24,16,10,0.92) 0%, rgba(24,16,10,0.3) 50%, rgba(24,16,10,0.05) 100%)',
+          background: 'linear-gradient(to top, rgba(24,16,10,0.92) 0%, rgba(24,16,10,0.42) 45%, rgba(24,16,10,0.18) 100%)',
           zIndex:     1,
         }}
       />
@@ -101,7 +101,7 @@ export default function ElixirHero() {
               fontWeight:    700,
               color:         T.ivory,
               lineHeight:    0.9,
-              letterSpacing: '-2px',
+              letterSpacing: '0',
               marginBottom:  '8px',
             }}
           >

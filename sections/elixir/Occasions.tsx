@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { GhostBtn } from '@/components/ui/Button';
@@ -40,7 +40,7 @@ export default function Occasions() {
             fontWeight:    300,
             fontStyle:     'italic',
             color:         T.ink,
-            letterSpacing: '-0.3px',
+            letterSpacing: '0',
             marginBottom:  '12px',
           }}
         >

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import OrnamentLine from '@/components/ui/OrnamentLine';
@@ -110,7 +110,7 @@ export default function OmakaseSection() {
                 fontStyle:     'italic',
                 color:         T.ivory,
                 lineHeight:    1.05,
-                letterSpacing: '-0.8px',
+                letterSpacing: '0',
                 marginBottom:  '16px',
               }}
             >

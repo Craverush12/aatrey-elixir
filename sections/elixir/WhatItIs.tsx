@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -8,10 +8,10 @@ import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
 
 const CAROUSEL = [
-  { src: '/images/bottle-pour.png',         alt: 'BURANSH Himalayan Rhododendron Concentrate being poured' },
-  { src: '/images/arrival-still-life.png',  alt: 'BURANSH bottle on wooden tray — Himalayan sunset' },
-  { src: '/images/gifting-collection.png',  alt: 'BURANSH gifting collection — crate with four bottles' },
-  { src: '/images/buransh-flower.png',      alt: 'Fresh Himalayan buransh blossoms used for the floral concentrate' },
+  { src: '/images/bottle-pour.webp',         alt: 'BURANSH Himalayan Rhododendron Concentrate being poured' },
+  { src: '/images/arrival-still-life.webp',  alt: 'BURANSH bottle on wooden tray — Himalayan sunset' },
+  { src: '/images/gifting-collection.webp',  alt: 'BURANSH gifting collection — crate with four bottles' },
+  { src: '/images/buransh-flower.webp',      alt: 'Fresh Himalayan buransh blossoms used for the floral concentrate' },
 ];
 
 export default function WhatItIs() {
@@ -131,7 +131,7 @@ export default function WhatItIs() {
               fontStyle:     'italic',
               color:         T.ink,
               lineHeight:    1.1,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >

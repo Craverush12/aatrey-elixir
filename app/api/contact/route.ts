@@ -1,31 +1,27 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { apiError, apiSuccess, parseJson } from '@/lib/api';
 import { appendRow } from '@/lib/sheets';
 import { sendTeamAlert } from '@/lib/email';
+import { contactSchema } from '@/lib/schemas';
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const {
-      name  = '',
-      email = '',
-      type  = '',
-    } = body;
+    const parsed = await parseJson(req, contactSchema);
+    if (!parsed.success) return apiError(parsed.error);
 
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
-    }
+    const { name, email, type } = parsed.data;
 
     await appendRow('CONTACT', [name, email, type]);
 
     await sendTeamAlert(
       `Footer Contact from ${name}`,
       `<p><strong>${name}</strong> (${email}) submitted a footer enquiry.</p>
-       <p>Type: ${type}</p>`
+       <p>Type: ${type || 'General'}</p>`
     );
 
-    return NextResponse.json({ success: true });
+    return apiSuccess();
   } catch (err) {
     console.error('[contact]', err);
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+    return apiError('Submission failed', 500);
   }
 }

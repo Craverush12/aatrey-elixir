@@ -41,7 +41,7 @@ function WaitlistForm({ product }: WaitlistFormProps) {
           lineHeight: 1.7,
         }}
       >
-        You're on the list. We'll let you know first.
+        You&apos;re on the list. We&apos;ll let you know first.
       </p>
     );
   }
@@ -60,7 +60,16 @@ function WaitlistForm({ product }: WaitlistFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr) auto',
+        gap: '12px',
+        alignItems: 'end',
+      }}
+      className="release-form"
+    >
       <input
         type="text"
         placeholder="Your name"
@@ -95,7 +104,7 @@ function WaitlistForm({ product }: WaitlistFormProps) {
           letterSpacing: '3px',
           textTransform: 'uppercase',
           transition:    `all 400ms ${T.ease}`,
-          alignSelf:     'flex-start',
+          minHeight:     '42px',
         }}
       >
         {state === 'loading' ? 'Sending…' : 'Notify Me'}
@@ -115,16 +124,16 @@ export default function ComingSoon() {
       id:          'jam' as const,
       name:        'BURANSH Jam',
       desc:        'Rhododendron arboreum fruit preserve. Single-origin. No pectin. No stabilisers. No preservatives. The same single-origin commitment in a preserve form. The wild harvest — available after the next bloom season.',
-      season:      'COMING SOON · Next harvest season',
-      imageSrc:    '/images/buransh-jam.png' as string | null,
+      season:      'PRIVATE RELEASE · Next harvest season',
+      imageSrc:    '/images/buransh-jam.webp' as string | null,
       imagePlaceholder: null,
     },
     {
       id:          'tea' as const,
       name:        'BURANSH Tea',
       desc:        'The flower dried slowly at altitude during the post-bloom dry season. No caffeine. No flavouring. No blending with other botanicals. The elixir in its most meditative form — steeped, not pressed.',
-      season:      'COMING SOON · Dry season',
-      imageSrc:    '/images/Buransh tea with rhododendron petals.png' as string | null,
+      season:      'PRIVATE RELEASE · Dry season',
+      imageSrc:    '/images/buransh-tea-petals.webp' as string | null,
       imagePlaceholder: null,
     },
   ];
@@ -149,7 +158,7 @@ export default function ComingSoon() {
             marginBottom:  '12px',
           }}
         >
-          COMING SOON
+          PRIVATE RELEASES
         </p>
         <h2
           style={{
@@ -158,20 +167,27 @@ export default function ComingSoon() {
             fontWeight:    300,
             fontStyle:     'italic',
             color:         T.ink,
-            letterSpacing: '-0.3px',
+            letterSpacing: '0',
           }}
         >
           More from the forest.
         </h2>
       </div>
 
-      <style>{`@media(max-width:480px){.coming-soon-grid{grid-template-columns:1fr!important}}`}</style>
+      <style>{`
+        @media(max-width:900px){
+          .coming-soon-grid{grid-template-columns:1fr!important}
+          .release-form{grid-template-columns:1fr!important}
+        }
+      `}</style>
       <div
         className="coming-soon-grid"
         style={{
           display:             'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap:                 '2px',
+          gridTemplateColumns: 'repeat(2, minmax(280px, 1fr))',
+          gap:                 '18px',
+          maxWidth:            '980px',
+          margin:              '0 auto',
         }}
       >
         {products.map((p) => (
@@ -179,14 +195,16 @@ export default function ComingSoon() {
             key={p.id}
             style={{
               background: T.ivory,
-              padding:    '0',
               border:     `1px solid ${T.border}`,
               overflow:   'hidden',
+              display:    'flex',
+              flexDirection: 'column',
             }}
+            className="release-card"
           >
             {/* Product image or placeholder */}
             {p.imageSrc ? (
-              <div style={{ position: 'relative', width: '100%', height: '260px', background: T.parchment, overflow: 'hidden' }}>
+              <div className="release-image" style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', background: T.parchment, overflow: 'hidden' }}>
                 <Image
                   src={p.imageSrc}
                   alt={p.name}
@@ -214,9 +232,9 @@ export default function ComingSoon() {
             )}
 
             {/* Card body */}
-            <div style={{ padding: '32px 32px 40px' }}>
+            <div style={{ padding: '26px clamp(22px, 3vw, 32px) 30px' }}>
 
-            {/* Coming soon badge */}
+            {/* Private release badge */}
             <span
               style={{
                 display:       'inline-block',
@@ -230,7 +248,7 @@ export default function ComingSoon() {
                 marginBottom:  '16px',
               }}
             >
-              Coming Soon
+              Private Release
             </span>
 
             <h3
@@ -257,7 +275,7 @@ export default function ComingSoon() {
                 fontStyle:    'italic',
                 color:        T.muted,
                 lineHeight:   1.7,
-                marginBottom: '8px',
+                marginBottom: '14px',
               }}
             >
               {p.desc}

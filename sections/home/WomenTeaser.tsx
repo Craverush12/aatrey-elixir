@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -9,11 +9,14 @@ import GrainOverlay from '@/components/ui/GrainOverlay';
 import OrnamentLine from '@/components/ui/OrnamentLine';
 import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
+import { WOMEN } from '@/lib/women';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WomenTeaser() {
   const sectionRef = useRef<HTMLElement>(null);
+  const womenHref = WOMEN.length > 0 ? '/about#women' : '/about';
+  const womenCta = WOMEN.length > 0 ? 'Meet the Women' : 'About the Project';
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -87,7 +90,7 @@ export default function WomenTeaser() {
           }}
         >
           <Image
-            src="/images/flower-other-pictures.png"
+            src="/images/flower-other-pictures.webp"
             alt="Rhododendron arboreum in bloom — Uttarakhand harvest, Project Aatmanirbhar"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center top' }}
@@ -127,7 +130,7 @@ export default function WomenTeaser() {
               fontStyle:     'italic',
               color:         T.ivory,
               lineHeight:    1.1,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >
@@ -154,8 +157,8 @@ export default function WomenTeaser() {
           </p>
 
           <div className="women-text">
-            <GhostIvoryBtn href="/about#women">
-              Meet the Women
+            <GhostIvoryBtn href={womenHref}>
+              {womenCta}
             </GhostIvoryBtn>
           </div>
         </div>

@@ -17,11 +17,17 @@ const NAV_LINKS = [
 ];
 
 const INQUIRY_TYPES = [
-  'Order Enquiry',
-  'Staycation Booking',
-  'Wholesale / Bulk',
+  'Private Order',
+  'Origin Stay',
+  'Gifting / Bulk',
   'Press & Media',
   'General',
+];
+
+const LEGAL_LINKS = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+  { href: '/shipping-returns', label: 'Shipping & Returns' },
 ];
 
 export default function Footer() {
@@ -69,7 +75,7 @@ export default function Footer() {
       <GrainOverlay />
 
       <style>{`
-        @media(max-width:480px){.footer-grid{grid-template-columns:1fr!important}.footer-bottom-bar{flex-direction:column!important;text-align:center!important;align-items:center!important}}
+        @media(max-width:480px){.footer-grid{grid-template-columns:1fr!important}.footer-bottom-bar{flex-direction:column!important;text-align:center!important;align-items:center!important}.footer-legal-links{justify-content:center!important}}
       `}</style>
       <div
         style={{
@@ -137,7 +143,7 @@ export default function Footer() {
                 maxWidth:   '240px',
               }}
             >
-              "{BRAND.tagline}"
+              &ldquo;{BRAND.tagline}&rdquo;
             </p>
 
             <p
@@ -150,7 +156,7 @@ export default function Footer() {
               }}
             >
               Himalayan Rhododendron Floral Concentrate<br />
-              Harvested at 2,500m · Uttarakhand, India
+              Harvested at 2,500m - Uttarakhand, India
             </p>
 
             {/* Instagram link */}
@@ -239,7 +245,7 @@ export default function Footer() {
                 marginBottom:  '20px',
               }}
             >
-              Get in touch
+              Private Desk
             </p>
 
             {formState === 'success' ? (
@@ -252,7 +258,7 @@ export default function Footer() {
                   lineHeight: 1.7,
                 }}
               >
-                Thank you. We'll be in touch shortly.
+                Thank you. We&apos;ll be in touch shortly.
               </p>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -320,7 +326,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.background   = 'transparent';
                   }}
                 >
-                  {formState === 'loading' ? 'Sending…' : 'Send Enquiry'}
+                  {formState === 'loading' ? 'Sending...' : 'Request Access'}
                 </button>
 
                 {formState === 'error' && (
@@ -354,8 +360,35 @@ export default function Footer() {
               color:      T.muted,
             }}
           >
-            FSSAI Lic. No. {BRAND.fssaiNumber} · Made in India · Uttarakhand
+            {BRAND.fssaiNumber ? `Food licence no. ${BRAND.fssaiNumber} - ` : ''}
+            Made in India - Uttarakhand
           </p>
+          <nav
+            className="footer-legal-links"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px 16px',
+              alignItems: 'center',
+            }}
+          >
+            {LEGAL_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontFamily: 'sans-serif',
+                  fontSize: '9px',
+                  letterSpacing: '1.5px',
+                  color: `${T.muted}90`,
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
           <p
             style={{
               fontFamily:    'sans-serif',
@@ -365,7 +398,7 @@ export default function Footer() {
               textTransform: 'uppercase',
             }}
           >
-            © {new Date().getFullYear()} Aatrey Elixir. All rights reserved.
+            Copyright {new Date().getFullYear()} Aatrey Elixir. All rights reserved.
           </p>
         </div>
       </div>

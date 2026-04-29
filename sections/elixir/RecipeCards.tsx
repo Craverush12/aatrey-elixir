@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef } from 'react';
 import OrnamentLine from '@/components/ui/OrnamentLine';
@@ -44,7 +44,7 @@ export default function RecipeCards() {
             fontWeight:    300,
             fontStyle:     'italic',
             color:         T.ink,
-            letterSpacing: '-0.3px',
+            letterSpacing: '0',
           }}
         >
           BURANSH expands. These are the possibilities.

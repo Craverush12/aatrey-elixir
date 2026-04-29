@@ -66,10 +66,10 @@ export default function HimalayanLandscape() {
       {/* Background image */}
       <div ref={imgRef} style={{ position: 'absolute', inset: '-14% 0' }}>
         <Image
-          src="/images/arrival-still-life.png"
-          alt="BURANSH bottle on wooden tray — Himalayan mountains at sunset, Uttarakhand"
+          src="/images/village-women-plucking.webp"
+          alt="Atmospheric Uttarakhand harvest landscape for BURANSH origin"
           fill
-          style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
+          style={{ objectFit: 'cover', objectPosition: 'center 45%' }}
           sizes="100vw"
         />
       </div>
@@ -128,7 +128,7 @@ export default function HimalayanLandscape() {
               fontStyle:     'italic',
               color:         '#FFFFFF',
               lineHeight:    1.05,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
               marginBottom:  '20px',
             }}
           >

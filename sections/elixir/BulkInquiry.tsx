@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -113,7 +113,7 @@ export default function BulkInquiry() {
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ink,
-              letterSpacing: '-0.3px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >
@@ -136,7 +136,6 @@ export default function BulkInquiry() {
             }}
           >
             From hotel breakfast menus to corporate wellness packages, wedding bars to export distributor catalogues — BURANSH works at every scale.
-            {/* TODO: confirm with client before launch — [minimum order quantity] */}
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -174,7 +173,7 @@ export default function BulkInquiry() {
                 Enquiry received.
               </h3>
               <p style={{ fontFamily: `'EB Garamond', serif`, fontSize: '15px', fontStyle: 'italic', color: T.muted }}>
-                We'll be in touch within 24 hours.
+                We&apos;ll be in touch within 24 hours.
               </p>
             </div>
           ) : (

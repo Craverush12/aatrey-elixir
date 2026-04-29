@@ -35,7 +35,7 @@ export default function GiftingPackages() {
           fontWeight:    300,
           fontStyle:     'italic',
           color:         T.ink,
-          letterSpacing: '-0.3px',
+          letterSpacing: '0',
           marginBottom:  '12px',
         }}
       >
@@ -68,11 +68,11 @@ export default function GiftingPackages() {
         }}
       >
         <Image
-          src="/images/gifting-collection.png"
+          src="/images/gifting-collection.webp"
           alt="BURANSH gifting collection — wooden crate with four bottles, harvest certificate and origin booklet"
           fill
           className="gifting-feature-image"
-          style={{ objectFit: 'contain', objectPosition: 'center' }}
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
           sizes="(max-width: 768px) 100vw, 90vw"
         />
       </div>
@@ -178,7 +178,6 @@ export default function GiftingPackages() {
               ))}
             </ul>
 
-            {/* TODO: confirm with client before launch — [price] */}
             <p
               style={{
                 fontFamily:    `'Cormorant Garamond', serif`,
@@ -188,12 +187,11 @@ export default function GiftingPackages() {
                 marginBottom:  '16px',
               }}
             >
-              {/* TODO: confirm with client before launch — [price] */}
-              Price on request
+              Prepared by private quote
             </p>
 
-            <CrimsonBtn href={`#order?type=${tier.id}`} fullWidth>
-              Order {tier.name}
+            <CrimsonBtn href="#bulk-order" fullWidth>
+              Enquire for {tier.name}
             </CrimsonBtn>
           </div>
         ))}

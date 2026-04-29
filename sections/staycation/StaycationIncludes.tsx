@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import OrnamentLine from '@/components/ui/OrnamentLine';
 import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
@@ -11,34 +12,48 @@ export default function StaycationIncludes() {
         borderTop:  `1px solid ${T.border}`,
       }}
     >
+      <style>{`
+        @media(max-width:960px){
+          .includes-layout{grid-template-columns:1fr!important}
+          .includes-list{grid-template-columns:1fr!important}
+        }
+      `}</style>
+
       <div
+        className="includes-layout"
         style={{
           display:             'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap:                 '48px 80px',
+          gridTemplateColumns: 'minmax(280px, 0.82fr) minmax(320px, 1.18fr)',
+          gap:                 '32px clamp(28px, 4vw, 56px)',
           alignItems:          'center',
         }}
       >
-        {/* Full-width image placeholder — asset TBC */}
         <div
           style={{
-            gridColumn:     '1 / -1',
-            width:          '100%',
-            height:         '340px',
-            background:     T.parchment,
-            border:         `1px dashed ${T.border}`,
-            display:        'flex',
-            alignItems:     'center',
-            justifyContent: 'center',
-            marginBottom:   '8px',
+            position:    'relative',
+            aspectRatio: '4 / 5',
+            overflow:    'hidden',
+            border:      `1px solid ${T.border}`,
+            background:  T.parchment,
           }}
         >
-          <p style={{ fontFamily: `'EB Garamond', serif`, fontStyle: 'italic', color: T.pale, fontSize: '13px', textAlign: 'center', padding: '0 24px' }}>
-            Staycation lifestyle photography · TBC
-          </p>
+          <Image
+            src="/images/village-women-plucking.webp"
+            alt="Rhododendron harvest walk included in the BURANSH stay"
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
+            sizes="(max-width: 960px) 100vw, 34vw"
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position:   'absolute',
+              inset:      0,
+              background: 'linear-gradient(to top, rgba(24,16,10,0.26) 0%, rgba(24,16,10,0.02) 48%)',
+            }}
+          />
         </div>
 
-        {/* Left — label + heading */}
         <div>
           <p
             style={{
@@ -56,15 +71,15 @@ export default function StaycationIncludes() {
           <h2
             style={{
               fontFamily:    `'Cormorant Garamond', serif`,
-              fontSize:      'clamp(24px, 3.5vw, 44px)',
+              fontSize:      'clamp(28px, 3.6vw, 46px)',
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ink,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >
-            Everything you need.<br />Nothing you don't.
+            Everything you need.<br />Nothing you don&apos;t.
           </h2>
 
           <div style={{ marginBottom: '20px' }}>
@@ -74,63 +89,64 @@ export default function StaycationIncludes() {
           <p
             style={{
               fontFamily:   `'EB Garamond', serif`,
-              fontSize:     'clamp(15px, 1.6vw, 17px)',
+              fontSize:     'clamp(15px, 1.5vw, 17px)',
               fontStyle:    'italic',
               color:        T.ink,
               lineHeight:   1.8,
-              opacity:      0.7,
-              maxWidth:     '380px',
+              opacity:      0.72,
+              maxWidth:     '34rem',
+              marginBottom: '24px',
             }}
           >
-            A minimum two-night stay. Every element of the experience is provided. You only need to arrive.
+            A minimum two-night stay. The essentials are arranged so your attention stays on the grove, the making, and the time on the hill.
           </p>
-        </div>
 
-        {/* Right — included list */}
-        <div
-          style={{
-            display:      'flex',
-            flexDirection:'column',
-            gap:          '2px',
-          }}
-        >
-          {BRAND.staycation.included.map((item) => (
-            <div
-              key={item}
-              style={{
-                display:    'flex',
-                alignItems: 'flex-start',
-                gap:        '16px',
-                padding:    '14px 16px',
-                background: T.parchment,
-                borderLeft: `2px solid ${T.border}`,
-              }}
-            >
+          <div
+            className="includes-list"
+            style={{
+              display:             'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap:                 '10px',
+            }}
+          >
+            {BRAND.staycation.included.map((item) => (
               <div
-                aria-hidden="true"
+                key={item}
                 style={{
-                  width:      '4px',
-                  height:     '4px',
-                  borderRadius:'50%',
-                  background: T.crimson,
-                  flexShrink: 0,
-                  marginTop:  '7px',
-                }}
-              />
-              <p
-                style={{
-                  fontFamily: `'EB Garamond', serif`,
-                  fontSize:   '15px',
-                  fontStyle:  'italic',
-                  color:      T.ink,
-                  lineHeight: 1.5,
-                  opacity:    item.includes('TBC') ? 0.5 : 0.85,
+                  display:    'flex',
+                  alignItems: 'flex-start',
+                  gap:        '12px',
+                  padding:    '14px 16px',
+                  background: T.parchment,
+                  borderLeft: `2px solid ${T.border}`,
                 }}
               >
-                {item}
-              </p>
-            </div>
-          ))}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    width:       '4px',
+                    height:      '4px',
+                    borderRadius:'50%',
+                    background:  T.crimson,
+                    flexShrink:  0,
+                    marginTop:   '7px',
+                  }}
+                />
+                <p
+                  style={{
+                    fontFamily: `'EB Garamond', serif`,
+                    fontSize:   '15px',
+                    fontStyle:  'italic',
+                    color:      T.ink,
+                    lineHeight: 1.55,
+                    opacity:    0.86,
+                  }}
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

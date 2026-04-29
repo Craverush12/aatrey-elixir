@@ -47,7 +47,7 @@ function StampBadge({
 
   // Unique textPath ID per badge to avoid SVG conflicts
   const pathId = `circle-path-${id}`;
-  const circumferenceText = label.toUpperCase() + (certNumber ? ` · ${certNumber}` : ' · CERTIFIED');
+  const circumferenceText = label.toUpperCase() + (certNumber ? ` - ${certNumber}` : ' - BURANSH');
 
   return (
     <div

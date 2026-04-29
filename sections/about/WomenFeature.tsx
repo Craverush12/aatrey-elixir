@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -14,6 +14,11 @@ gsap.registerPlugin(ScrollTrigger);
 const LAYOUT_SIDES = ['left', 'right', 'left'] as const;
 
 export default function WomenFeature() {
+  if (WOMEN.length === 0) return null;
+  return <WomenFeatureInner />;
+}
+
+function WomenFeatureInner() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -96,7 +101,7 @@ export default function WomenFeature() {
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ivory,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
             }}
           >
             {WOMEN.length} women. Generations of knowledge.
@@ -257,7 +262,7 @@ function WomanStory({ woman }: { woman: typeof WOMEN[0] }) {
           paddingLeft:  '16px',
         }}
       >
-        "{woman.quote}"
+        &ldquo;{woman.quote}&rdquo;
       </blockquote>
     </>
   );

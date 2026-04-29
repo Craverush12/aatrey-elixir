@@ -7,35 +7,38 @@ import { GhostBtn } from '@/components/ui/Button';
 import OrnamentLine from '@/components/ui/OrnamentLine';
 import { T } from '@/lib/tokens';
 import { BRAND } from '@/lib/brand-content';
+import { WOMEN } from '@/lib/women';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectAatmanirbhar() {
   const sectionRef = useRef<HTMLElement>(null);
+  const hasImpactData = BRAND.project.impact.some((item) => item.num !== null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Count-up animation for impact numbers
-      BRAND.project.impact.forEach((_, i) => {
-        const el = document.querySelector(`.impact-num-${i}`);
-        if (!el || _.num === null) return;
-        const target = Number(_.num);
-        gsap.fromTo(
-          el,
-          { textContent: '0' },
-          {
-            textContent: target,
-            duration:    0.8,
-            ease:        'power2.out',
-            snap:        { textContent: 1 },
-            scrollTrigger: {
-              trigger:     el,
-              start:       'top 80%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      });
+      if (hasImpactData) {
+        BRAND.project.impact.forEach((item, i) => {
+          const el = document.querySelector(`.impact-num-${i}`);
+          if (!el || item.num === null) return;
+          const target = Number(item.num);
+          gsap.fromTo(
+            el,
+            { textContent: '0' },
+            {
+              textContent: target,
+              duration:    0.8,
+              ease:        'power2.out',
+              snap:        { textContent: 1 },
+              scrollTrigger: {
+                trigger:     el,
+                start:       'top 80%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        });
+      }
 
       gsap.fromTo(
         '.project-text',
@@ -56,7 +59,7 @@ export default function ProjectAatmanirbhar() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [hasImpactData]);
 
   return (
     <section
@@ -78,7 +81,6 @@ export default function ProjectAatmanirbhar() {
           alignItems:          'center',
         }}
       >
-        {/* Left — mission text */}
         <div>
           <p
             className="project-text"
@@ -102,7 +104,7 @@ export default function ProjectAatmanirbhar() {
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ink,
-              letterSpacing: '-0.3px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >
@@ -128,57 +130,139 @@ export default function ProjectAatmanirbhar() {
             {BRAND.project.body}
           </p>
 
-          <div className="project-text">
-            <GhostBtn href="#women">Meet the Women</GhostBtn>
-          </div>
-        </div>
+          <p
+            className="project-text"
+            style={{
+              fontFamily:   `'EB Garamond', serif`,
+              fontSize:     'clamp(14px, 1.5vw, 16px)',
+              fontStyle:    'italic',
+              color:        T.muted,
+              lineHeight:   1.8,
+              marginBottom: '24px',
+            }}
+          >
+            {BRAND.project.body2}
+          </p>
 
-        {/* Right — impact numbers */}
-        <div
-          style={{
-            display:             'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap:                 '2px',
-          }}
-        >
-          {BRAND.project.impact.map((item, i) => (
-            <div
-              key={item.label}
+          <div
+            className="project-text"
+            style={{
+              background: T.parchment,
+              borderLeft: `3px solid ${T.crimson}`,
+              padding:    '18px 20px',
+              marginBottom: WOMEN.length > 0 ? '24px' : 0,
+            }}
+          >
+            <p
               style={{
-                background: T.parchment,
-                padding:    '28px 20px',
-                textAlign:  'center',
+                fontFamily: `'EB Garamond', serif`,
+                fontSize:   '15px',
+                fontStyle:  'italic',
+                color:      T.ink,
+                lineHeight: 1.75,
               }}
             >
-              <p
-                className={`impact-num-${i}`}
-                style={{
-                  fontFamily:    `'Cormorant Garamond', serif`,
-                  fontSize:      'clamp(36px, 5vw, 56px)',
-                  fontWeight:    300,
-                  color:         T.crimson,
-                  lineHeight:    1,
-                  marginBottom:  '4px',
-                }}
-              >
-                {item.num !== null ? item.num : '—'}
-              </p>
-              <p
-                style={{
-                  fontFamily:    'sans-serif',
-                  fontSize:      '7px',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                  color:         T.muted,
-                  lineHeight:    1.4,
-                }}
-              >
-                {item.label}
-              </p>
-              {/* TODO: confirm with client before launch — [all impact numbers] */}
+              {BRAND.project.missionStatement}
+            </p>
+          </div>
+
+          {WOMEN.length > 0 && (
+            <div className="project-text">
+              <GhostBtn href="#women">Meet the Women</GhostBtn>
             </div>
-          ))}
+          )}
         </div>
+
+        {hasImpactData ? (
+          <div
+            style={{
+              display:             'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap:                 '2px',
+            }}
+          >
+            {BRAND.project.impact.map((item, i) => (
+              <div
+                key={item.label}
+                style={{
+                  background: T.parchment,
+                  padding:    '28px 20px',
+                  textAlign:  'center',
+                }}
+              >
+                <p
+                  className={`impact-num-${i}`}
+                  style={{
+                    fontFamily:    `'Cormorant Garamond', serif`,
+                    fontSize:      'clamp(36px, 5vw, 56px)',
+                    fontWeight:    300,
+                    color:         T.crimson,
+                    lineHeight:    1,
+                    marginBottom:  '4px',
+                  }}
+                >
+                  {item.num !== null ? item.num : '-'}
+                </p>
+                <p
+                  style={{
+                    fontFamily:    'sans-serif',
+                    fontSize:      '7px',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    color:         T.muted,
+                    lineHeight:    1.4,
+                  }}
+                >
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+            style={{
+              display:             'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap:                 '2px',
+            }}
+          >
+            {BRAND.project.principles.map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  background: T.parchment,
+                  padding:    '28px 24px',
+                  borderLeft: `2px solid ${T.border}`,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily:    'sans-serif',
+                    fontSize:      '7px',
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                    color:         T.crimson,
+                    marginBottom:  '10px',
+                  }}
+                >
+                  {item.title}
+                </p>
+                <p
+                  style={{
+                    fontFamily: `'EB Garamond', serif`,
+                    fontSize:   '15px',
+                    fontStyle:  'italic',
+                    color:      T.ink,
+                    lineHeight: 1.7,
+                    opacity:    0.78,
+                  }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

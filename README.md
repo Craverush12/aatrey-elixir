@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BURANSH Website
 
-## Getting Started
+Next.js site for BURANSH by Aatrey Elixir: product story, private product purchase CTAs, gifting and bulk enquiries, staycation enquiries, Omakase enquiries, private serving-note submissions, private release waitlists, and contact capture.
 
-First, run the development server:
+## Local Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Production checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+If Node memory is tight in this workspace, use:
 
-To learn more about Next.js, take a look at the following resources:
+```powershell
+$env:NODE_OPTIONS='--max-old-space-size=4096'; npm run lint
+$env:NODE_OPTIONS='--max-old-space-size=4096'; npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Required for enquiry forms and operational email:
 
-## Deploy on Vercel
+```bash
+RESEND_API_KEY=
+FROM_EMAIL=
+TEAM_EMAIL=
+GOOGLE_SHEETS_CREDENTIALS=
+GOOGLE_SHEET_ID=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Required for product purchase buttons:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+NEXT_PUBLIC_RAZORPAY_STANDARD_URL=
+NEXT_PUBLIC_RAZORPAY_SUGARFREE_URL=
+```
+
+Recommended for canonical and Open Graph metadata:
+
+```bash
+NEXT_PUBLIC_SITE_URL=
+```
+
+Optional legacy payment-verification support:
+
+```bash
+RAZORPAY_KEY_SECRET=
+NEXT_PUBLIC_RAZORPAY_KEY_ID=
+```
+
+`GOOGLE_SHEETS_CREDENTIALS` must be a base64-encoded Google service-account JSON credential. The spreadsheet should contain tabs for `CONTACT`, `BULK_ORDERS`, `STAYCATION_INQUIRIES`, `OMAKASE_INQUIRIES`, `WAITLIST_TEA`, `WAITLIST_JAM`, and `ORDERS` if legacy payment verification is used.
+
+## Commerce Model
+
+Standard and sugar-free product purchase CTAs redirect to configured payment destinations. If a URL is not configured, the CTA routes users to private access enquiry instead of showing a disabled checkout state.
+
+Gifting, bulk orders, staycation, and Omakase remain enquiry-led. Prices, accommodation details, named profiles, testimonials, documentary metadata, impact numbers, and certification numbers stay hidden until approved.
+
+## Launch Checklist
+
+- `npm run lint` passes.
+- `npm run build` passes without workspace-root warnings.
+- Razorpay/payment destination links are configured and tested.
+- Resend sender domain is verified.
+- Google Sheets service account has append access to the live spreadsheet.
+- Team recipient email is correct.
+- No unapproved testimonials, women profiles, certification numbers, prices, property details, or film metadata are visible.
+- Legal/compliance review is complete for food, process, origin, no-additive/no-preservative, and sugar-free language.
+- Image, video, packaging, portrait, and copy rights are approved for publication.
+
+## Smoke Test
+
+- Visit `/`, `/elixir`, `/about`, `/staycation`, `/more`, and `/thank-you`.
+- Check desktop around 1440px and mobile around 390px.
+- Open and close the navigation with click/tap and Escape.
+- Submit contact, bulk, staycation, Omakase, waitlist, and recipe/forms in a staging environment.
+- Confirm product CTAs open the configured payment destinations.
+- Confirm enquiry failures show graceful errors and do not expose service details.
+
+## Documentation Map
+
+- [FINAL_EXECUTION_PLAN.md](./FINAL_EXECUTION_PLAN.md): final execution sequence to finish content, imagery, legal/SEO surfaces, QA, and deployment.
+- [IMAGE_GENERATION_MANIFEST.md](./IMAGE_GENERATION_MANIFEST.md): exact still-asset file map, ChatGPT 5.5 generation prompts, review rules, and replacement workflow.
+- [FINAL_HANDOFF.md](./FINAL_HANDOFF.md): VPS hosting, update SOP, Google Sheets database retrieval, env setup, QA results, and remaining approvals.
+- [FINAL_AUDIT_SCOPE.md](./FINAL_AUDIT_SCOPE.md): current implementation status and remaining launch dependencies.
+- [TASK_BOARD.md](./TASK_BOARD.md): execution status for the closeout work.
+- [CLIENT_REVIEW_REQUEST.md](./CLIENT_REVIEW_REQUEST.md): client inputs still required before final public approval.
+- [REVIEW_AGENT_BRIEF.md](./REVIEW_AGENT_BRIEF.md): criteria for final brand/QA review.
+- [DOCS_INVENTORY.md](./DOCS_INVENTORY.md): which docs are active, historical, or candidates for deletion.

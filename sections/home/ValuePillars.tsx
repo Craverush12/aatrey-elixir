@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GhostIvoryBtn } from '@/components/ui/Button';
@@ -13,6 +14,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ValuePillars() {
   const sectionRef = useRef<HTMLElement>(null);
+  const pillarImages = [
+    { src: '/images/buransh-flower.webp', position: 'center' },
+    { src: '/images/arrival-still-life.webp', position: 'center 40%' },
+    { src: '/images/village-women-plucking.webp', position: 'center' },
+    { src: '/images/buransh-flower-plucked.webp', position: 'center' },
+  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,79 +82,100 @@ export default function ValuePillars() {
               fontWeight:    300,
               fontStyle:     'italic',
               color:         T.ivory,
-              letterSpacing: '-0.3px',
+              letterSpacing: '0',
             }}
           >
             Four reasons this elixir is unlike anything you have ever tasted.
           </h2>
         </div>
 
-        {/* 4-column grid */}
+        {/* Image-led story grid */}
         <div
           className="pillars-grid"
           style={{
             display:             'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap:                 '2px',
+            gap:                 '14px',
             marginBottom:        '48px',
           }}
         >
-          {BRAND.valuePillars.map((pillar) => (
+          {BRAND.valuePillars.map((pillar, index) => (
             <div
               key={pillar.num}
               className="pillar-card"
               style={{
+                minHeight:  '440px',
                 background: `${T.ivory}08`,
                 border:     `1px solid ${T.umber}30`,
-                padding:    '32px 24px',
+                position:   'relative',
+                overflow:   'hidden',
+                display:    'flex',
+                alignItems: 'flex-end',
               }}
             >
-              {/* Numeral */}
-              <p
+              <Image
+                src={pillarImages[index].src}
+                alt=""
+                fill
+                sizes="(max-width: 767px) 100vw, 25vw"
                 style={{
-                  fontFamily:    `'Cormorant Garamond', serif`,
-                  fontSize:      '48px',
-                  fontStyle:     'italic',
-                  fontWeight:    300,
-                  color:         T.gold,
-                  lineHeight:    1,
-                  marginBottom:  '16px',
-                  opacity:       0.6,
+                  objectFit: 'cover',
+                  objectPosition: pillarImages[index].position,
+                  filter: 'saturate(0.9) brightness(0.72)',
                 }}
-              >
-                {pillar.num}
-              </p>
-
-              {/* Title */}
-              <h3
+              />
+              <div
+                aria-hidden="true"
                 style={{
-                  fontFamily:    `'Cormorant Garamond', serif`,
-                  fontSize:      '20px',
-                  fontWeight:    400,
-                  color:         T.ivory,
-                  marginBottom:  '10px',
-                  lineHeight:    1.2,
+                  position: 'absolute',
+                  inset: 0,
+                  background: `linear-gradient(180deg, rgba(24,16,10,0.10) 0%, rgba(24,16,10,0.48) 48%, rgba(24,16,10,0.94) 100%)`,
                 }}
-              >
-                {pillar.title}
-              </h3>
+              />
+              <div style={{ position: 'relative', zIndex: 2, padding: '28px 24px' }}>
+                <p
+                  style={{
+                    fontFamily:    `'Cormorant Garamond', serif`,
+                    fontSize:      '42px',
+                    fontStyle:     'italic',
+                    fontWeight:    300,
+                    color:         T.gold,
+                    lineHeight:    1,
+                    marginBottom:  '14px',
+                  }}
+                >
+                  {pillar.num}
+                </p>
 
-              <div style={{ marginBottom: '12px' }}>
-                <OrnamentLine color={`${T.umber}60`} width={60} />
+                <h3
+                  style={{
+                    fontFamily:    `'Cormorant Garamond', serif`,
+                    fontSize:      '22px',
+                    fontWeight:    400,
+                    color:         T.ivory,
+                    marginBottom:  '10px',
+                    lineHeight:    1.15,
+                  }}
+                >
+                  {pillar.title}
+                </h3>
+
+                <div style={{ marginBottom: '12px' }}>
+                  <OrnamentLine color={`${T.ivory}45`} width={60} />
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: `'EB Garamond', serif`,
+                    fontSize:   '14px',
+                    fontStyle:  'italic',
+                    color:      `${T.ivory}C9`,
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {pillar.body}
+                </p>
               </div>
-
-              {/* Body */}
-              <p
-                style={{
-                  fontFamily: `'EB Garamond', serif`,
-                  fontSize:   '14px',
-                  fontStyle:  'italic',
-                  color:      `${T.ivory}70`,
-                  lineHeight: 1.65,
-                }}
-              >
-                {pillar.body}
-              </p>
             </div>
           ))}
         </div>

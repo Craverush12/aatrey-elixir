@@ -1,46 +1,49 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { apiError, apiSuccess, parseJson } from '@/lib/api';
 import { appendRow } from '@/lib/sheets';
 import { sendTeamAlert } from '@/lib/email';
+import { bulkInquirySchema } from '@/lib/schemas';
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const parsed = await parseJson(req, bulkInquirySchema);
+    if (!parsed.success) return apiError(parsed.error);
+
     const {
-      name         = '',
-      organisation = '',
-      email        = '',
-      phone        = '',
-      useCase      = '',
-      quantity     = '',
-      timeline     = '',
-      message      = '',
-      // Honeypot — must be empty
-      website      = '',
-    } = body;
+      name,
+      organisation,
+      email,
+      phone,
+      useCase,
+      quantity,
+      timeline,
+      message,
+      website,
+    } = parsed.data;
 
-    // Spam protection
-    if (website) {
-      return NextResponse.json({ success: true }); // silently discard
-    }
-
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
-    }
+    if (website) return apiSuccess();
 
     await appendRow('BULK_ORDERS', [
-      name, organisation, email, phone, useCase, quantity, timeline, message,
+      name,
+      organisation,
+      email,
+      phone,
+      useCase,
+      quantity,
+      timeline,
+      message,
     ]);
 
     await sendTeamAlert(
       `Bulk Inquiry from ${organisation || name}`,
-      `<p><strong>${name}</strong> from ${organisation} (${email}) submitted a bulk inquiry.</p>
-       <p>Use case: ${useCase} · Quantity: ${quantity} · Timeline: ${timeline}</p>
-       <p>Message: ${message}</p>`
+      `<p><strong>${name}</strong> from ${organisation || 'an individual buyer'} (${email}) submitted a bulk inquiry.</p>
+       <p>Use case: ${useCase || 'Not specified'} · Quantity: ${quantity || 'Not specified'} · Timeline: ${timeline || 'Not specified'}</p>
+       <p>Message: ${message || '—'}</p>`
     );
 
-    return NextResponse.json({ success: true });
+    return apiSuccess();
   } catch (err) {
     console.error('[bulk-inquiry]', err);
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+    return apiError('Submission failed', 500);
   }
 }

@@ -69,7 +69,7 @@ export default function ProductIntro() {
           }}
         >
           <Image
-            src="/images/bottle-pour.png"
+            src="/images/bottle-pour.webp"
             alt="BURANSH Himalayan Rhododendron Floral Concentrate — being poured"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -109,7 +109,7 @@ export default function ProductIntro() {
               fontStyle:     'italic',
               color:         T.ink,
               lineHeight:    1.1,
-              letterSpacing: '-0.5px',
+              letterSpacing: '0',
               marginBottom:  '16px',
             }}
           >

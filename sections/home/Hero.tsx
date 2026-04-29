@@ -98,7 +98,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/images/bottle-editorial.png"
+            src="/images/bottle-editorial.webp"
             alt=""
             fill
             priority
@@ -205,7 +205,7 @@ export default function Hero() {
                 fontStyle:     'italic',
                 color:         T.ink,
                 lineHeight:    0.95,
-                letterSpacing: '-2px',
+                letterSpacing: '0',
               }}
             >
               {BRAND.heroCopy.line1}
@@ -219,7 +219,7 @@ export default function Hero() {
                 fontWeight:    700,
                 color:         T.ink,
                 lineHeight:    1,
-                letterSpacing: '-2px',
+                letterSpacing: '0',
               }}
             >
               {BRAND.heroCopy.line2}
@@ -282,7 +282,7 @@ export default function Hero() {
         {/* Bottle image — contained with padding so it never touches edges */}
         <div style={{ position: 'absolute', inset: '48px 32px' }}>
           <Image
-            src="/images/bottle-editorial.png"
+            src="/images/bottle-editorial.webp"
             alt="BURANSH 750ml Himalayan Rhododendron Floral Concentrate"
             fill
             priority

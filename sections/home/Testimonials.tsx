@@ -11,6 +11,11 @@ import { TESTIMONIALS } from '@/lib/testimonials';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Testimonials() {
+  if (TESTIMONIALS.length === 0) return null;
+  return <TestimonialsInner />;
+}
+
+function TestimonialsInner() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -100,7 +105,7 @@ export default function Testimonials() {
                   userSelect:  'none',
                 }}
               >
-                "
+                &ldquo;
               </p>
 
               <blockquote

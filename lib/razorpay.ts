@@ -1,18 +1,16 @@
-import Razorpay from 'razorpay';
 import crypto from 'crypto';
-
-export const razorpay = new Razorpay({
-  key_id:     process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
+import { getOptionalEnv } from '@/lib/env';
 
 export function verifySignature(
   orderId:   string,
   paymentId: string,
   signature: string
 ): boolean {
+  const secret = getOptionalEnv('RAZORPAY_KEY_SECRET');
+  if (!secret) return false;
+
   const expected = crypto
-    .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET!)
+    .createHmac('sha256', secret)
     .update(`${orderId}|${paymentId}`)
     .digest('hex');
 

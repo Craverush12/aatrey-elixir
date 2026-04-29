@@ -1,14 +1,17 @@
 import { Resend } from 'resend';
+import { requireEnv } from '@/lib/env';
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+function getResend() {
+  return new Resend(requireEnv('RESEND_API_KEY'));
+}
 
 export async function sendTeamAlert(
   subject: string,
   html: string
 ): Promise<void> {
-  await resend.emails.send({
-    from: process.env.FROM_EMAIL!,
-    to: process.env.TEAM_EMAIL!,
+  await getResend().emails.send({
+    from: requireEnv('FROM_EMAIL'),
+    to: requireEnv('TEAM_EMAIL'),
     subject: `[BURANSH] ${subject}`,
     html,
   });
@@ -19,8 +22,8 @@ export async function sendGuestConfirmation(
   subject: string,
   html: string
 ): Promise<void> {
-  await resend.emails.send({
-    from: process.env.FROM_EMAIL!,
+  await getResend().emails.send({
+    from: requireEnv('FROM_EMAIL'),
     to,
     subject: `BURANSH — ${subject}`,
     html,

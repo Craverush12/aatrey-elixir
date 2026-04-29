@@ -1,7 +1,8 @@
 import { google } from 'googleapis';
+import { requireEnv } from '@/lib/env';
 
 function getAuth() {
-  const raw = process.env.GOOGLE_SHEETS_CREDENTIALS!;
+  const raw = requireEnv('GOOGLE_SHEETS_CREDENTIALS');
   const credentials = JSON.parse(
     Buffer.from(raw, 'base64').toString('utf-8')
   );
@@ -19,7 +20,7 @@ export async function appendRow(
   const sheets = google.sheets({ version: 'v4', auth });
 
   await sheets.spreadsheets.values.append({
-    spreadsheetId: process.env.GOOGLE_SHEET_ID!,
+    spreadsheetId: requireEnv('GOOGLE_SHEET_ID'),
     range: `${tab}!A:Z`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {

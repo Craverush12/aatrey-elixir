@@ -58,6 +58,7 @@ body {
   background-color: #F5EDD8;
   color: #18100A;
   font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+  font-weight: 500;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -86,12 +87,25 @@ body {
 /* ─── Typography base ─── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.05;
 }
 
 p, li, blockquote {
   font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+  font-weight: 500;
+}
+
+a, button, label, input, textarea, select {
+  font-weight: 500;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+[style*="font-weight: 300"] {
+  font-weight: 500 !important;
 }
 
 /* ─── Grain texture utility ─── */
