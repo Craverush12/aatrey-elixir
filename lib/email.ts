@@ -1,17 +1,32 @@
 import { Resend } from 'resend';
-import { requireEnv } from '@/lib/env';
+import { getOptionalEnv } from '@/lib/env';
 
-function getResend() {
-  return new Resend(requireEnv('RESEND_API_KEY'));
+function getResend(): Resend | null {
+  const key = getOptionalEnv('RESEND_API_KEY');
+  if (!key) return null;
+  return new Resend(key);
+}
+
+function isEmailConfigured(): boolean {
+  return Boolean(
+    getOptionalEnv('RESEND_API_KEY') &&
+    getOptionalEnv('FROM_EMAIL') &&
+    getOptionalEnv('TEAM_EMAIL')
+  );
 }
 
 export async function sendTeamAlert(
   subject: string,
   html: string
 ): Promise<void> {
-  await getResend().emails.send({
-    from: requireEnv('FROM_EMAIL'),
-    to: requireEnv('TEAM_EMAIL'),
+  if (!isEmailConfigured()) {
+    console.log(`[email] skipped (not configured): ${subject}`);
+    return;
+  }
+  const resend = getResend()!;
+  await resend.emails.send({
+    from: getOptionalEnv('FROM_EMAIL')!,
+    to:   getOptionalEnv('TEAM_EMAIL')!,
     subject: `[BURANSH] ${subject}`,
     html,
   });
@@ -22,8 +37,13 @@ export async function sendGuestConfirmation(
   subject: string,
   html: string
 ): Promise<void> {
-  await getResend().emails.send({
-    from: requireEnv('FROM_EMAIL'),
+  if (!isEmailConfigured()) {
+    console.log(`[email] skipped (not configured): guest confirmation to ${to}`);
+    return;
+  }
+  const resend = getResend()!;
+  await resend.emails.send({
+    from: getOptionalEnv('FROM_EMAIL')!,
     to,
     subject: `BURANSH — ${subject}`,
     html,

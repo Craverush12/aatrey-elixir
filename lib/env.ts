@@ -1,14 +1,15 @@
 const REQUIRED_SERVER_ENV = [
-  'RESEND_API_KEY',
-  'FROM_EMAIL',
-  'TEAM_EMAIL',
   'GOOGLE_SHEETS_CREDENTIALS',
   'GOOGLE_SHEET_ID',
 ] as const;
 
 const OPTIONAL_SERVER_ENV = [
+  'RESEND_API_KEY',
+  'FROM_EMAIL',
+  'TEAM_EMAIL',
   'RAZORPAY_KEY_SECRET',
   'NEXT_PUBLIC_RAZORPAY_KEY_ID',
+  'RAZORPAY_WEBHOOK_SECRET',
 ] as const;
 
 export function requireEnv(name: (typeof REQUIRED_SERVER_ENV)[number]): string {
