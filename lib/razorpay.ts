@@ -63,15 +63,16 @@ export function deriveOrderDetails(
     };
   }
 
-  // Amount-based detection
-  const STANDARD_PRICE   = 800;
-  const SUGARFREE_PRICE  = 900;
+  // Amount-based detection — check all known unit prices, largest first to avoid false positives
+  const PRICE_MAP: Array<{ price: number; variant: string }> = [
+    { price: 1099, variant: 'Standard'   },
+    { price:  800, variant: 'Standard'   },   // Bedroom Mastery offer price (both variants)
+  ];
 
-  if (amountRupees % STANDARD_PRICE === 0 && amountRupees / STANDARD_PRICE <= 24) {
-    return { variant: 'Standard',   quantity: amountRupees / STANDARD_PRICE,  amountRupees };
-  }
-  if (amountRupees % SUGARFREE_PRICE === 0 && amountRupees / SUGARFREE_PRICE <= 24) {
-    return { variant: 'Sugar-Free', quantity: amountRupees / SUGARFREE_PRICE, amountRupees };
+  for (const { price, variant } of PRICE_MAP) {
+    if (amountRupees % price === 0 && amountRupees / price <= 24) {
+      return { variant, quantity: amountRupees / price, amountRupees };
+    }
   }
 
   // Fallback — record as-is for manual review

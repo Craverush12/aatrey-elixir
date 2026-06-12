@@ -10,8 +10,8 @@ export const BRAND = {
   product: 'Himalayan Rhododendron Floral Concentrate - 750ml',
   sku:     'AATREY ELIXIR - NO. 001',
 
-  priceStandard:  750 as null | number,
-  priceSugarFree: 700 as null | number,
+  priceStandard:  1099 as null | number,
+  priceSugarFree: 1099 as null | number,
 
   origin: {
     altitude: '2,500m',
@@ -164,8 +164,10 @@ export const BRAND = {
     name:             'Project Aatmanirbhar',
     tagline:          'Their hands. Their hills. Their elixir.',
     body:             `Before BURANSH was a brand, it was a practice. Pahadi women in the Rhododendron groves of Uttarakhand have understood this flower since before any name existed for it. They harvest by touch - knowing which bloom is ready, which is not, which will never be. That knowledge is not in any book. It lives in them.`,
-    body2:            `Project Aatmanirbhar is our commitment that this knowledge is met with dignity, careful record-keeping, and publication only with permission.`,
+    body2:            `Project Aatmanirbhar is a dedicated rural empowerment initiative focused on creating sustainable livelihoods, fostering self-reliance, and preserving traditional ecology in the Himalayas. It is our commitment that the harvesters' knowledge is met with dignity, fair economic participation, careful record-keeping, and publication only with permission.`,
     missionStatement: `We do not support the women of BURANSH. We are accountable to them. That is a different relationship entirely.`,
+    initiativeText:   `BURANSH is proud to be a "Powered by Project Aatmanirbhar" initiative.`,
+    initiativeUrl:    `https://projectaatmanirbhar.org/`,
     principles: [
       {
         title: 'Permission before publication',
@@ -425,13 +427,13 @@ export const BRAND = {
     hero: {
       preLabel: 'UTTARAKHAND - THE EXPERIENCE',
       headline: 'Some luxury must be witnessed to be believed.',
-      sub:      'A small-group stay in the Rhododendron groves: walk the harvest, witness the cold press at altitude, and leave with the making in your hands.',
+      sub:      'Under the patronage of Aatmanirbhar Society, the BURANSH stay and experience invites you into the story of the Himalayan Rhododendron in the world\'s first Herbal Valley.',
       subCta:   'What to expect',
     },
     expectation: {
       sectionLabel: 'WHAT THIS IS',
       headline:     'This is not a tour. This is an initiation.',
-      body:         `The BURANSH staycation is built around the harvest window itself. You come for the grove, the process, and the people closest to it.`,
+      body:         `The BURANSH staycation is built around the harvest window itself under the patronage of Aatmanirbhar Society. You come for the grove, the process, and the people closest to the Himalayan Rhododendron story.`,
       body2:        `Nothing here is staged at tourist distance. The days are shaped by bloom, weather, and the real working rhythm on the hill.`,
     },
     journey: [
@@ -541,6 +543,35 @@ export const BRAND = {
     ],
     guestRange: '5-8 guests',
     duration:   'Approximately 2.5 hours',
+  },
+
+  // Team Members
+  team: {
+    sectionLabel: 'LEADERSHIP',
+    headline: 'The Team Behind the Elixir',
+    sub: 'Guided by experience, driven by purpose.',
+    members: [
+      {
+        name: 'Himalaya Chaturvedi',
+        role: 'Chief Executive Officer (CEO)',
+        responsibilities: 'Overall Execution, Business Operations, Team Leadership & Results',
+      },
+      {
+        name: 'Ranjeet Chaturvedi',
+        role: 'Director - Growth & Strategic Alliances',
+        responsibilities: 'Growth strategy, Strategic partnerships, Channel expansion, Key alliances',
+      },
+      {
+        name: 'Nilesh Goswami',
+        role: 'Director - Strategy & Performance',
+        responsibilities: 'Business strategy, Performance management, Systems, Processes & Transformation',
+      },
+      {
+        name: 'Bhanupriya',
+        role: 'Director - Finance, Compliance & Administration',
+        responsibilities: 'Finance, Accounts, Compliance, Legal & Administration',
+      },
+    ],
   },
 
   fssaiNumber: null as null | string,

@@ -64,9 +64,15 @@ export async function POST(req: NextRequest) {
   // 6 — Derive variant + quantity from amount
   const { variant, quantity, amountRupees } = deriveOrderDetails(payment.amount, notes);
 
-  // 7 — Write to Google Sheet ORDERS tab
+  // 7 — Detect acquisition source
+  const noteSource = notes['source'] || notes['Source'] || '';
+  const isBM = noteSource.toUpperCase().includes('BEDROOMMASTERY')
+    || (amountRupees / quantity) === 800;
+  const source = isBM ? 'BEDROOMMASTERY' : 'DIRECT';
+
+  // 8 — Write to Google Sheet ORDERS tab
   // Columns: Timestamp | Name | Email | Phone | Address | City | State | Pincode
-  //          Variant | Qty | Amount (₹) | Payment ID | Order ID | Status
+  //          Variant | Qty | Amount (₹) | Payment ID | Order ID | Status | Source
   try {
     await appendRow('ORDERS', [
       name,
@@ -82,6 +88,7 @@ export async function POST(req: NextRequest) {
       payment.id,
       payment.order_id || '',
       'PAID',
+      source,
     ]);
   } catch (err) {
     // Log but don't fail — we never want a Sheet error to cause Razorpay to retry
@@ -106,6 +113,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:6px 12px 6px 0;color:#666;">Product</td>   <td style="padding:6px 0;"><strong>${variant} × ${quantity}</strong></td></tr>
           <tr><td style="padding:6px 12px 6px 0;color:#666;">Amount</td>    <td style="padding:6px 0;"><strong>₹${amountRupees}</strong></td></tr>
           <tr><td style="padding:6px 12px 6px 0;color:#666;">Payment ID</td><td style="padding:6px 0;font-size:12px;">${payment.id}</td></tr>
+          <tr><td style="padding:6px 12px 6px 0;color:#666;">Source</td>    <td style="padding:6px 0;"><strong>${source}</strong></td></tr>
         </table>
       </div>`
     );
