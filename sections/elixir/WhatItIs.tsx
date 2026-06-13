@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -16,6 +16,29 @@ const CAROUSEL = [
 
 export default function WhatItIs() {
   const [active, setActive] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      setActive((prev) => (prev + 1) % CAROUSEL.length);
+    } else if (isRightSwipe) {
+      setActive((prev) => (prev - 1 + CAROUSEL.length) % CAROUSEL.length);
+    }
+  };
 
   return (
     <section
@@ -26,9 +49,9 @@ export default function WhatItIs() {
     >
       <style>{`
         @media(max-width:767px){
-          .what-sticky-panel{position:static!important;top:auto!important;min-height:auto!important;background:${T.ink}!important}
+          .what-sticky-panel{position:static!important;top:auto!important;min-height:auto!important;background:${T.ink}!important;margin-top:40px!important}
           .what-carousel-stage{min-height:clamp(360px,68svh,520px)!important;background:${T.ink}!important}
-          .what-carousel-image{object-fit:cover!important;object-position:center center!important}
+          .what-carousel-image{object-fit:contain!important;object-position:center center!important}
           .what-carousel-dots{padding:14px 0 18px!important}
           .what-copy{padding:40px 24px 56px!important}
         }
@@ -48,11 +71,17 @@ export default function WhatItIs() {
             alignSelf: 'flex-start',
             minHeight: '500px',
             overflow:  'hidden',
-            background: T.parchment,
+            background: T.ink, // Avoid brown background around contained images
           }}
         >
           {/* Image area */}
-          <div className="what-carousel-stage" style={{ position: 'relative', width: '100%', minHeight: '560px' }}>
+          <div 
+            className="what-carousel-stage" 
+            style={{ position: 'relative', width: '100%', minHeight: '560px' }}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             {CAROUSEL.map((img, i) => (
               <div
                 className="what-carousel-slide"
@@ -62,6 +91,8 @@ export default function WhatItIs() {
                   inset:      0,
                   transition: 'opacity 500ms ease',
                   opacity:    i === active ? 1 : 0,
+                  zIndex:     i === active ? 1 : 0,
+                  pointerEvents: i === active ? 'auto' : 'none',
                 }}
               >
                 <Image
@@ -96,7 +127,7 @@ export default function WhatItIs() {
                   width:        i === active ? '24px' : '6px',
                   height:       '6px',
                   borderRadius: '3px',
-                  background:   i === active ? T.crimson : `${T.umber}50`,
+                  background:   i === active ? T.crimson : 'rgba(255, 255, 255, 0.3)',
                   border:       'none',
                   cursor:       'pointer',
                   padding:      0,
@@ -195,6 +226,46 @@ export default function WhatItIs() {
           {/* Compliance stamps */}
           <div style={{ marginBottom: '40px' }}>
             <ComplianceBadges layout="row" />
+          </div>
+
+          {/* Ingredients */}
+          <div style={{ marginBottom: '36px' }}>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '4px',
+              textTransform: 'uppercase', color: T.crimson, marginBottom: '10px' }}>
+              INGREDIENTS
+            </p>
+            <p style={{ fontFamily: `'EB Garamond', serif`, fontSize: '15px',
+              fontStyle: 'italic', color: T.ink, lineHeight: 1.7, opacity: 0.8 }}>
+              {BRAND.ingredients}
+            </p>
+          </div>
+
+          {/* Nutritional table */}
+          <div style={{ marginBottom: '40px' }}>
+            <p style={{ fontFamily: 'sans-serif', fontSize: '7px', letterSpacing: '4px',
+              textTransform: 'uppercase', color: T.crimson, marginBottom: '14px' }}>
+              NUTRITIONAL VALUE PER {BRAND.nutrition.servingSize}
+            </p>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <tbody>
+                {BRAND.nutrition.rows.map((row, i) => (
+                  <tr key={row.label} style={{
+                    borderBottom: `1px solid ${T.border}50`,
+                    background: i % 2 === 0 ? 'transparent' : `${T.parchment}80`,
+                  }}>
+                    <td style={{ padding: '7px 0 7px 8px', fontFamily: `'EB Garamond', serif`,
+                      fontSize: '14px', color: T.ink, opacity: 0.8 }}>
+                      {row.label}
+                    </td>
+                    <td style={{ padding: '7px 8px 7px 0', fontFamily: 'sans-serif',
+                      fontSize: '11px', letterSpacing: '0.5px', color: T.ink,
+                      fontWeight: 700, textAlign: 'right', whiteSpace: 'nowrap' }}>
+                      {row.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           {/* Why altitude matters */}

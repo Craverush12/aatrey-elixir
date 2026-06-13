@@ -216,7 +216,7 @@ export const BRAND = {
       { label: 'Process',    value: 'Cold-pressed at source' },
       { label: 'Harvest',    value: 'Single annual harvest, March-May' },
       { label: 'Altitude',   value: '2,400-2,600m, Uttarakhand' },
-      { label: 'Dilution',   value: '1:8 ratio (or to taste)' },
+      { label: 'Dilution',   value: '1:3 ratio (or to taste)' },
       { label: 'Additives',  value: 'None. Zero.' },
     ],
     whyItMatters: {
@@ -575,6 +575,45 @@ export const BRAND = {
   },
 
   fssaiNumber: null as null | string,
+
+  // From official product label
+  ingredients: 'Buransh Juice, Sugar, Citric Acid, Permitted class II Preservatives (INS 211)',
+
+  manufacturer: {
+    name:    'AATREY ELIXIR PVT. LTD.',
+    address: 'Unit No.513, Solus Tower, Tower B, Block C, Hiranandani Estate, Ghodbunder Road, Thane (W), Maharashtra – 400607',
+  },
+
+  marketedBy: {
+    name:    'Atmanirbhar Society',
+    address: '11, Canal Bazar Road, Devbanda, Dehradun – 248001',
+    support: 'info@aatreyelixir.com',
+  },
+
+  barcode: '9109171 991719',
+
+  // Nutritional value per 100ml (as per official product label)
+  nutrition: {
+    servingSize: '100ml',
+    rows: [
+      { label: 'Total Energy',           value: '160.08 Kcal' },
+      { label: 'Total Fat',              value: '0.1 g'       },
+      { label: 'Monounsaturated Fat',    value: '0.0 g'       },
+      { label: 'Polyunsaturated Fat',    value: '0.0 g'       },
+      { label: 'Total Carbohydrate',     value: '38.68 g'     },
+      { label: 'Sugar',                  value: '31.14 g'     },
+      { label: 'Protein',                value: '2.18 g'      },
+      { label: 'Sodium',                 value: '111 mg'      },
+      { label: 'Potassium',              value: '1.10 mg'     },
+      { label: 'Iron',                   value: '1.1 mg'      },
+      { label: 'Calcium',                value: '11.10 mg'    },
+      { label: 'Vitamin B1',             value: '32.90 mg'    },
+      { label: 'Vitamin B3',             value: '6.67 μg'     },
+      { label: 'Vitamin B6',             value: '32.1 mg'     },
+      { label: 'Vitamin C',              value: '19.06 mg'    },
+      { label: 'Vitamin E',              value: '2.17 μg'     },
+    ],
+  },
 } as const;
 
 
