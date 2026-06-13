@@ -23,16 +23,20 @@ export async function POST(req: NextRequest) {
 
     if (website) return apiSuccess();
 
-    await appendRow('BULK_ORDERS', [
-      name,
-      organisation,
-      email,
-      phone,
-      useCase,
-      quantity,
-      timeline,
-      message,
-    ]);
+    try {
+      await appendRow('BULK_ORDERS', [
+        name,
+        organisation,
+        email,
+        phone,
+        useCase,
+        quantity,
+        timeline,
+        message,
+      ]);
+    } catch (sheetErr) {
+      console.error('[bulk-inquiry] sheets error (create BULK_ORDERS tab):', sheetErr);
+    }
 
     await sendTeamAlert(
       `Bulk Inquiry from ${organisation || name}`,
