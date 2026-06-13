@@ -161,10 +161,10 @@ function CustomisationInner() {
       </div>
 
       <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-        <CrimsonBtn href="#order?variant=standard">
+        <CrimsonBtn href="?variant=standard#order">
           Order Standard
         </CrimsonBtn>
-        <GhostBtn href="#order?variant=sugarfree">
+        <GhostBtn href="?variant=sugarfree#order">
           Order Sugar-Free
         </GhostBtn>
       </div>
